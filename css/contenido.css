@@ -1,0 +1,36 @@
+#contenido .contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+}
+
+#contenido article{
+    margin: 50px;
+}
+
+#contenido img{
+width: 100%;
+max-width: 500px;
+}
+
+
+#contenido a{
+    color: #B6B6B7;
+    font-size: 25px;
+    text-decoration: none;
+   
+}
+
+#contenido a:hover{
+    color:#00669C ;
+}
+
+#contenido h3{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#contenido img:hover{
+    transform: scale(1.05);
+}
