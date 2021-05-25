@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap');
 @import url(banner.css);
 @import url(contenido.css);
+@font-face {
+    font-family: Mukta; 
+    src: url(fonts/Mukta-Light.ttf);
+}
 
 
 
@@ -18,8 +22,7 @@ body{
 header{
     font-family: 'Merriweather Sans', sans-serif;
     width: 100%;
-    height: 150px;
-    background-color: #00669C;
+    background-color: #006797;
     color: #fff;
     position: fixed;
     top: 0;
@@ -36,48 +39,47 @@ header{
 nav{
     position: absolute;
     width: 100%;
-    height: 55px;
-    margin-top: 160px;
+    height: 40px;
+    margin-top: 105px;
     left: 0;
     background-color: #7D0F3F;
     z-index: 100;
 }
 
 nav a{
+    height: 40px;
     position: absolute;
     color: #fff;
     font-size: 20px;
-    margin-top: 15px;
-    margin-left:60px;
+    margin-top: 0px;
     text-decoration:none ;
+    padding: 7px;
 }
 
 nav a:hover{
-    color:#00669C ;
+    color: #7D0F3F;
+    background-color: white;
 }
 
-h1{
-    font-size: 20px;
+h1{ 
+    font-family: Mukta;
+    font-size: 15px;
     position:absolute;
     margin-top: 105px;
+    margin-left: 21% !important;
 }
 
-
 .escom{
-    width: 100%;
-    max-width: 120px;
     position: absolute;
-    margin-left: 0px;
     margin-top: 10px;
+    width: 100px;
 }
 
 .ipn{
     position: absolute;
-    margin-left: 65%;
     margin-top: 10px;
+    margin-left: 75%;
     width: 100%;
-    max-width: 55px;
-
 }
 
 section{
@@ -86,8 +88,7 @@ section{
 }
 
 #titulo {
-    text-align: center;
-   
+    text-align: center;   
 }
 
 #titulo h2{
@@ -97,23 +98,24 @@ section{
 #titulo h3, h4{
     color: #B6B6B7;
 }
-
 footer{
     position: absolute;
     background-color: #B6B6B7;
+    margin-top: 0px !important;
     width: 100%;
-    height: 100px;
-    margin-top: 200px;
+    height: 10%;
     left: 0;
 }
 
 
 .redes img{
     opacity: .3;
+    width: 4%;
+    margin-left: 5px;
 }
+
 .icon-face img:hover{
     opacity: 1;
-
 }
 
 .icon-twitter img:hover{
@@ -122,64 +124,197 @@ footer{
 }
 
 
-/* media */ 
-
-
-@media(min-width:600px){
+/* media */
+@media(min-width:50px){
+    header{
+        height: 80px;
+    }    
+    nav{
+        height: 40px;
+        margin-top: 85px;
+    }    
+    nav a{
+        font-size: 17px;
+    }    
+    #banner{
+        margin-top: 120px;
+    }
     h1{
-        margin-top: 50px;
-        margin-left: 20%;
+        font-size: 20px;
+        margin-top: 25px;
+        margin-left: 16% !important;
     }
-    .escom{
-        margin-top: 10px;
-    }
-    
-    .ipn{
-        margin-left: 70%;
-    }
-}
-
-@media(min-width:800px){
-    h1{
-        font-size: 30px;
-        margin-left: 18%;
-    }
-
-    .escom{
-        margin-top: 20px;
-    }
-    
-    .ipn{
-        margin-left: 73%;
-        margin-top: 20px;
-       
-    }
-}
-
-@media(min-width:1200px){
-    h1{
-        font-size: 50px;
-        margin-top: 40px;
-        margin-left: 20%;;
-    }
-    .escom{
-        max-width: 150px;
-        margin-top: 15px;
-    }
-    
-    .ipn{
-        margin-left: 80%;
-        margin-top: 10px;
-        max-width: 70px;
-    }
-
     #titulo h2{
-        font-size: 50px;;
+        font-size: 25px;
     }
 
     #titulo h3, h4{
-        font-size: 30px;;
+        font-size: 15px;;
     }
-    
-    
+    #contenido img{
+        width: 70%;
+        margin-left: 15% !important;
+    }    
+    #contenido a{
+        font-size: 20px;  
+    }
+    #banner h2{
+        font-size: 45px;
+    } 
+    .escom{
+        width: 85px;
+        margin-left: -6%;
+    }
+    .ipn{
+        width: 35px;        
+        margin-left: 80%;
+    } 
+    .redes img{
+        width: 8%;
+    }   
+}
+@media(min-width:600px){
+    header{
+        height: 80px;
+    }    
+    nav{
+        height: 40px;
+        margin-top: 85px;
+    }    
+    nav a{
+        font-size: 17px;
+    }    
+    #banner{
+        margin-top: 120px;
+    }
+    h1{
+        font-size: 25px;
+        margin-top: 25px;
+        margin-left: 15% !important;
+    }
+    #titulo h2{
+        font-size: 25px;
+    }
+
+    #titulo h3, h4{
+        font-size: 15px;;
+    }
+    #contenido img{
+        width: 65%;
+        margin-left: 17% !important;
+    }    
+    #contenido a{
+        font-size: 20px;  
+    }
+    #banner h2{
+        font-size: 45px;
+    } 
+    .escom{
+        width: 85px;
+        margin-left: -5%;
+    }
+    .ipn{
+        width: 35px;        
+        margin-left: 80%;
+    } 
+    .redes img{
+        width: 8%;
+    }   
+}
+@media(min-width:900px){
+    header{
+        height: 80px;
+    }    
+    nav{
+        height: 40px;
+        margin-top: 85px;
+    }    
+    nav a{
+        font-size: 17px;
+    }    
+    #banner{
+        margin-top: 120px;
+    }
+    h1{
+        font-size: 35px;
+        margin-top: 25px;
+        margin-left: 17% !important;
+    }
+    #titulo h2{
+        font-size: 25px;
+    }
+
+    #titulo h3, h4{
+        font-size: 15px;;
+    }
+    #contenido img{
+        width: 40%;
+        margin-left: 30% !important;
+    }    
+    #contenido a{
+        font-size: 20px;  
+    }
+    #banner h2{
+        font-size: 45px;
+    } 
+    .escom{
+        width: 85px;
+        margin-left: 0%;
+    }
+    .ipn{
+        width: 35px;     
+        margin-left: 75%;
+    }      
+    .redes img{
+        width: 4%;
+    }   
+}
+
+@media(min-width:1200px){
+    header{
+        height: 100px;
+    }
+    nav{
+        height: 40px;
+        margin-top: 105px;
+    }
+    nav a{
+        font-size: 20px;
+    }
+    #banner{
+        margin-top: 145px;
+    }
+    h1{
+        font-size: 37px;
+        margin-top: 25px;
+        margin-left: 21% !important;
+    }
+    #titulo h2{
+        font-size: 30px;
+    }
+
+    #titulo h3, h4{
+        font-size: 20px;;
+    }
+    #contenido img{
+        width: 40%;
+        margin-left: 30% !important;
+    }
+    #contenido a{
+        font-size: 25px;  
+    }
+    #banner h2{
+        font-size: 50px;
+    } 
+    .escom{
+        width: 100px;
+        margin-left: 5%;
+    }
+    .ipn{
+        width: 40px;     
+        margin-left: 75%;
+    } 
+    .redes img{
+        width: 4%;
+    }    
 }
