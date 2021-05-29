@@ -1,49 +1,89 @@
-#formulario .contenedor{
-    width: 80%;
-    margin: auto;
-   
-}
+
 
 #formulario form{
-    width: 85%;
-    margin: auto;
     font-size: 20px;
 }
 
-
 #formulario table{
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    background-color: #e5f5fd;
+    border-radius: 1em;
+    padding-left: 15%;
+    padding-top: 15px;
+    color: #00669C;
+    
 }
 
 #formulario tr{
     height: 35px;
 }
 
-fieldset{
-    margin-top: 50px;
-}
+
 #formulario{
     margin-top: 200px;
 }
+
+
+#formulario input{
+    margin-right: 20px;
+    height: 30px;
+}
+
 
 #formulario h2{
     color: #00669C;
    text-align: center;
 }
-
-#formulario input{
-    margin-right: 15px;
-}
-
 #formulario h3, h4{
     color: #B6B6B7;
     text-align: center;
 }
 
-legend{
+#formulario caption{
     color:#7D0F3F;
-    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+table input{
+    width: 80%;
+    border-radius: 10px;
+    border-color:#00669C;
+    border: 0px;
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+#formulario select{
+    width: 80%;
+    height: 30px;
+    border: 0px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #B6B6B7;
+    
+}
+
+#F{
+    width: 20px;
+    
+}
+
+#M{
+    width: 20px;
+}
+
+
+
+/* media */
+
+@media(min-width:1000px){
+    #formulario form{
+        width: 65%;
+        margin: auto;
+    }
+
+}
