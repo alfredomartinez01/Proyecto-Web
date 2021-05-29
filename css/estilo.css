@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap');
 @import url(banner.css);
 @import url(contenido.css);
+@import url(formulario.css);
 @font-face {
     font-family: Mukta; 
     src: url(fonts/Mukta-Light.ttf);
