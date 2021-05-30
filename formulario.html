@@ -7,7 +7,7 @@
     <title>Registro</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/estilo.css">
-
+    <script language="javascript" type="text/javascript" src="javascript/escuela.js"></script>
    
 
 </head>
@@ -148,7 +148,7 @@
                                     <td><label for="EscuelaProcedencia">Escuela de procedencia:</label></td>
                                 </tr>
                                 <tr>
-                                    <td><select name="EscuelaProcedencia" id="Escuela">
+                                    <td><select name="EscuelaProcedencia" id="Escuela" onChange="mostrar(this.value);">
                                         <option value="default">--Escoge una opci&oacute;n--</option>
                                         <option value="CECyT1">CECyT #1: "Gonzalo V&aacute;zquez Vela"</option>
                                         <option value="CECyT2">CECyT #2: “Miguel Bernard Perales"</option>
@@ -166,15 +166,15 @@
                                         <option value="CECyT14">CECyT #14 "Luis Enrique Erro Soler"</option>
                                         <option value="CECyT15">CECyT #15 "Di&oacute;doro Ant&uacute;nez Echegaray"</option>
                                         <option value="CET1">CET 1 "Walter Cross Buchanan"</option>
-                                        <option value="otra">otra</option>
+                                        <option value="otra">Otra</option>
                                     </select></td>
                                 </tr>
-                                <tr>
-                                    <td><label id="lotra" for="NombreEscuela">Nombre de la escuela: </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input  type="text" id="NombreEscuela" name="NombreEscuela"/></td>
-                                </tr>
+	                                <tr id="lesc">
+	                                    <td><label id="lotra" for="NombreEscuela">Nombre de la escuela: </label></td>
+	                                </tr>
+	                                <tr id="iesc">
+	                                    <td><input  type="text" id="NombreEscuela" name="NombreEscuela"/></td>
+	                                </tr>
                                 <tr>
                                     <td><label for="Estado">Estado de la Rep&uacute;blica</label></td>
                                     </tr>
