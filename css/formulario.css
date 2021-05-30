@@ -76,7 +76,9 @@ table input{
     width: 20px;
 }
 
-
+#lesc, #iesc{
+    display: none;
+}
 
 /* media */
 
