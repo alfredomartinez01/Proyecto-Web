@@ -1,0 +1,42 @@
+/* ESTILOS DE BOTONES */
+.button {
+  border: 1px solid #006797;
+  padding: 5px;
+  width: 120px;
+  height: 30px;
+  background-color: #006797;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 7px;
+  box-shadow: 1px 1px 2px rgb(148, 148, 148);
+  transition: all 200ms;
+}
+.button:hover {
+  background-color: white;
+  color: #006797;
+  font-weight: bolder;
+}
+.button:active {
+  box-shadow: 1px 1px 2px rgb(148, 148, 148) inset;
+}
+
+/* ESTILOS DE INPUTS DISTINTOS */
+.inputs {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: lighter;
+  color: rgb(178, 191, 226);
+  height: 28px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #006797;
+  border-radius: 10px;
+}
+.inputs:focus {
+  color: rgb(33, 71, 175) !important;
+  box-shadow: 0px 0px 2px rgb(33, 71, 175);
+}
