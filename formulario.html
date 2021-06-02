@@ -7,7 +7,8 @@
     <title>Registro</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/estilo.css">
-    <script language="javascript" type="text/javascript" src="javascript/escuela.js"></script>
+    <script language="javascript" type="text/javascript" src="javascript/escuela.js">
+    </script>
    
 
 </head>
@@ -38,7 +39,7 @@
                 <h4>(AGOSTO 2021)</h4>
 
             <div class="contenedor">
-                    <form action="php/datos.php" method="POST" enctype="multipart/form-data">
+                    <form  name="confirmar" action="php/datos.php" method="POST" enctype="multipart/form-data"  onsubmit="return confirmar_envio()">
                         <!--identidad-->
                       
                             <table>
@@ -238,7 +239,9 @@
                     
                         <br>
                         <!-- Envio y reseto de informacion -->
-                        <input type="reset"/><input type="submit" name="Envio" value="Enviar"/> <br>
+                        <input id="boton" type="reset"/> 
+                        <button id="boton" type="submit">Enviar</button>
+                        <!--<input type="submit" onclick="confirmar_envio()" name="Envio" value="Enviar"/><br>-->
                     
                     </form>
 
