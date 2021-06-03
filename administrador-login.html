@@ -15,9 +15,9 @@
   <body>
     <header>
       <div class="contenedor">
-        <img class="escom" src="img/logo_escom.png" />
-        <h1>Escuela Superior de C&oacute;mputo</h1>
-        <img class="ipn" src="img/logo_ipn.png" />
+        <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
+        <h1> Escuela Superior de C&oacute;mputo </h1>
+        <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
 
         <nav>
           <a href="main.html" target="_parent">Inicio</a>
@@ -35,7 +35,7 @@
             <h3>Datos de usuario</h3>
             <div id="login">
                 <!-- Para el inicio de sesión-->
-                <form action="" id="formulario-sesion">
+                <form action="./php/validacion-credenciales.php" method="get"  id="formulario-sesion">
                     <!-- Correo electrónico -->
                     <label for="usuario"  id="label-user" class="form-center">Ingrese su correo registrado</label>
                     <input type="email" name="usuario" id="input-user" class="form-center inputs " autocomplete="off" required>
