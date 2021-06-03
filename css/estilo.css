@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap');
-@import url(banner.css);
-@import url(contenido.css);
-@import url(formulario.css);
+
 @font-face {
     font-family: Mukta; 
     src: url(fonts/Mukta-Light.ttf);
@@ -85,7 +83,6 @@ h1{
     margin-left: 75%;
     width: 100%;
 }
-
 section{
     width: 100%;
     margin-bottom: 25px;
