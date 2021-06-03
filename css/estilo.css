@@ -47,7 +47,7 @@ nav{
     z-index: 100;
 }
 
-nav a{
+nav > a{
     height: 40px;
     position: absolute;
     color: #fff;
