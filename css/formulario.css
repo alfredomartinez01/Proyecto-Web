@@ -28,7 +28,22 @@
     margin-right: 20px;
     height: 30px;
 }
+#formulario #boton{
+    height: 40px;
+    width: 110px;
+    margin-right: 30px;
+    background-color: #00669C;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    border: 0px;
 
+}
+
+#formulario #boton:hover{
+    background-color:#7D0F3F;
+}
 
 #formulario h2{
     color: #00669C;
@@ -45,10 +60,6 @@
     margin-bottom: 10px;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-<<<<<<< HEAD
-
-=======
->>>>>>> a499e41ac34eed76073b448a6e5f14187bc027ab
 }
 
 table input{
