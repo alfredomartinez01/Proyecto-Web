@@ -1,69 +1,124 @@
 <!DOCTYPE html public "-//w3c">
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio de sesión - Administrador</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    
-    <link rel="stylesheet" href="css/estilo.css" />
-    <link rel="stylesheet" href="css/administrador.css" />
-    <link rel="stylesheet" href="css/estilosSecciones.css">
-    <link rel="stylesheet" href="css/inputs.css">    
 
-    <script src="javascript/admin.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio de sesión - Administrador</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 
-  <body>
-    <header>
-      <div class="contenedor">
-        <img class="escom" src="img/logo_escom.png" />
-        <h1>Escuela Superior de C&oacute;mputo</h1>
-        <img class="ipn" src="img/logo_ipn.png" />
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="stylesheet" href="css/administrador.css" />
+  <link rel="stylesheet" href="css/estilosSecciones.css">
+  <link rel="stylesheet" href="css/inputs.css">
 
-        <!-- Menu de navegación -->
-        <nav>
-          <a href="main.html" target="_parent">Inicio</a>
-          <ul>
-            <li onclick="menu(4)">Eliminar alumno</li>
-            <li onclick="menu(3)">Actualizar alumno</li>
-            <li onclick="menu(2)">Buscar alumno</li>
-            <li onclick="menu(1)">Registrar alumno</li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+  <script src="javascript/admin.js"></script>
+</head>
 
-    <main>
-      <section class="administrador">       
-        <h2>ADMINISTRACIÓN</h2>
-        <h3>DE ALUMNOS DE NUEVO INGRESO</h3>
-        <h4>(AGOSTO 2021)</h4>
+<body>
+  <header>
+    <div class="contenedor">
+      <img class="escom" src="img/logo_escom.png" />
+      <h1>Escuela Superior de C&oacute;mputo</h1>
+      <img class="ipn" src="img/logo_ipn.png" />
 
-        <div id="content" class="contenedor">
-          <!-- Sección -->
+      <!-- Menu de navegación -->
+      <nav>
+        <a href="main.html" target="_parent">Inicio</a>
+        <ul>
+          <li onclick="menu(4)">Eliminar alumno</li>
+          <li onclick="menu(3)">Actualizar alumno</li>
+          <li onclick="menu(2)">Buscar alumno</li>
+          <li onclick="menu(1)">Registrar alumno</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="administrador">
+      <h2>ADMINISTRACIÓN</h2>
+      <h3>DE ALUMNOS DE NUEVO INGRESO</h3>
+      <h4>(AGOSTO 2021)</h4>
+
+      <div id="content" class="contenedor">
+
+        <!-- 
+            Sección de registro 
+        -->
+        <div id="formulario" style="display: none;">
+          <iframe src="../formulario.html" id="formulario_registro" scrolling="no"></iframe>
         </div>
-      </section>
-    </main>
 
-    <footer>
-      <div class="contenedor">
-        <div class="redes">
-          <a
-            class="icon-face"
-            target="_blank"
-            href="https://www.facebook.com/escomipnmx/"
-            ><img src="img/fb.png" alt="link facebook"
-          /></a>
-          <a
-            class="icon-twitter"
-            target="_blank"
-            href="https://twitter.com/escomunidad"
-            ><img src="img/twitt.png" alt="link twitter"
-          /></a>
+        <!-- 
+            Sección de búsqueda
+        -->
+        <div id="busqueda" style="display: none;">
+          <label for="tipo_busqueda" id="instruccion_busqueda">Escoge el tipo de búsqueda a
+            realizar: </label>
+          <select name="tipo_busqueda" id="tipo_busqueda" onchange="selectorBusqueda()">
+            <option>-- Seleccione una opción --</option>
+            <option value="boleta">Número de boleta</option>
+            <option value="curp">CURP</option>
+            <option value="grupo">Grupo asignado</option>
+            <option value="hora">Hora de inicio</option>
+            <option value="todos">Todos los registros</option>
+          </select>
+        </div>
+        <!-- Búsqueda por número de boleta -->
+        <form action="consultaBusqueda.php" method="" id="bus_boleta" class="formulario_busqueda" style="display: none;">
+          <label for="boleta" class="labels">Número de boleta: </label>
+            <input type="number" id="boleta" name="boleta" class="inputs">
+            <input type="submit"
+            class="button" value="Buscar">
+        </form>
+        <!-- Búsqueda por curp -->
+        <form action="consultaBusqueda.php" method="" id="bus_curp" class="formulario_busqueda" style="display: none;">
+          <label for="curp" class="labels">CURP: </label>
+          <input type="text" id="curp" name="curp" class="inputs">
+          <input type="submit" class="button" value="Buscar">
+        </form>
+        <!-- Busqueda por grupo asignado -->
+        <form action="consultaBusqueda.php" method="" id="bus_grupo"  class="formulario_busqueda" style="display: none;">
+          <label for="grupo" class="labels">Grupo asignado: </label>
+          <input type="text" id="grupo" name="grupo" class="inputs">
+          <input type="submit" class="button" value="Buscar">
+        </form>
+        <!-- Busqueda por hora asignada -->
+        <form action="consultaBusqueda.php" method="" id="bus_hora" class="formulario_busqueda" style="display: none;">
+          <label for="hora" class="labels">Hora de inicio: </label>
+          <input type="time" id="hora" name="hora" class="inputs">
+          <input type="submit" class="button" value="Buscar">
+        </form>
+        <!-- Muestra de todos -->
+        <form action="consultaBusqueda.php" method="" id="bus_todos" class="formulario_busqueda" style="display: none;">
+        </form>
+        <!-- Muestra la tabla con la información de los usuarios-->
+        <div id="tabla">
+          <table>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+          </table>
         </div>
       </div>
-    </footer>
-  </body>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="redes">
+        <a class="icon-face" target="_blank" href="https://www.facebook.com/escomipnmx/"><img src="img/fb.png"
+            alt="link facebook" /></a>
+        <a class="icon-twitter" target="_blank" href="https://twitter.com/escomunidad"><img src="img/twitt.png"
+            alt="link twitter" /></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
