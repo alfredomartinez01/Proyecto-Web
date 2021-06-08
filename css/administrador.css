@@ -17,9 +17,9 @@ nav ul li{
   cursor: pointer;
 }
 nav > a,
-nav ul li a{
+nav ul li{
   display: block;
-  float: left;
+  float: right;  
   height: 40px;
   color: #fff;
   font-size: 20px;
@@ -30,7 +30,7 @@ nav ul li a{
 nav ul li:hover{
   background-color: white;
 }
-nav ul li:hover a{
+nav ul li:hover{
   color: #00669C;
   background-color: white;
 }
@@ -51,7 +51,8 @@ input {
   color: #B6B6B7;
   text-align: center;
 }
-.administrador > div h3 {
+.administrador > div h3{
+  text-align: center;
   color: White;  
   font-size: 25px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -125,6 +126,9 @@ label {
 #formulario-registro input[type="submit"]{
   margin-top: 20px;
 }
+
+/* Para la parte de administrador  */
+
 
 @media (max-width: 650px){
   #login{    

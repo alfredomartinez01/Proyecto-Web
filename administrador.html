@@ -9,7 +9,10 @@
     
     <link rel="stylesheet" href="css/estilo.css" />
     <link rel="stylesheet" href="css/administrador.css" />
-    <link rel="stylesheet" href="css/inputs.css">
+    <link rel="stylesheet" href="css/estilosSecciones.css">
+    <link rel="stylesheet" href="css/inputs.css">    
+
+    <script src="javascript/admin.js"></script>
   </head>
 
   <body>
@@ -19,15 +22,15 @@
         <h1>Escuela Superior de C&oacute;mputo</h1>
         <img class="ipn" src="img/logo_ipn.png" />
 
+        <!-- Menu de navegación -->
         <nav>
           <a href="main.html" target="_parent">Inicio</a>
           <ul>
-            <li><a href="#">Eliminar alumno</a></li>
-            <li><a href="#">Actualizar alumno</a></li>
-            <li><a href="#">Buscar alumno</a></li>
-            <li><a href="#">Registrar alumno</a></li>
+            <li onclick="menu(4)">Eliminar alumno</li>
+            <li onclick="menu(3)">Actualizar alumno</li>
+            <li onclick="menu(2)">Buscar alumno</li>
+            <li onclick="menu(1)">Registrar alumno</li>
           </ul>
-
         </nav>
       </div>
     </header>
@@ -38,9 +41,8 @@
         <h3>DE ALUMNOS DE NUEVO INGRESO</h3>
         <h4>(AGOSTO 2021)</h4>
 
-        <div class="contenedor">
-            
-
+        <div id="content" class="contenedor">
+          <!-- Sección -->
         </div>
       </section>
     </main>
