@@ -57,8 +57,8 @@
         <div id="busqueda" style="display: none;">
           <label for="tipo_busqueda" id="instruccion_busqueda">Escoge el tipo de búsqueda a
             realizar: </label>
-          <select name="tipo_busqueda" id="tipo_busqueda" onchange="selectorBusqueda()">
-            <option>-- Seleccione una opción --</option>
+          <select name="tipo_busqueda" id="tipo_busqueda" onchange="selectorBusqueda()" value="default">
+            <option value="default">-- Seleccione una opción --</option>
             <option value="boleta">Número de boleta</option>
             <option value="curp">CURP</option>
             <option value="grupo">Grupo asignado</option>
@@ -66,46 +66,91 @@
             <option value="todos">Todos los registros</option>
           </select>
         </div>
-        <!-- Búsqueda por número de boleta -->
-        <form action="consultaBusqueda.php" method="" id="bus_boleta" class="formulario_busqueda" style="display: none;">
+         <!-- 
+            Sección de eliminación
+        -->
+        <div id="eliminacion" style="display: none;">
+          <label for="tipo_eliminacion" id="instruccion_eliminacion">Escoge el tipo de eliminacion a realizar: </label>
+          <select name="tipo_eliminacion" id="tipo_eliminacion" onchange="selectorEliminacion()" value="default">
+            <option value="default">-- Seleccione una opción --</option>
+            <option value="boleta">Número de boleta</option>
+            <option value="curp">CURP</option>
+            <option value="grupo">Grupo asignado</option>
+            <option value="hora">Hora de inicio</option>
+            <option value="todos">Todos los registros</option>
+          </select>
+        </div>
+
+        <!-- Debido a la reutilización de estos formularios inferiores, irán abajo del selector de búsqueda y eliminación -->
+
+        <!-- Consulta por número de boleta -->
+        <div id="form-boleta" class="datos_consulta" style="display: none;">
           <label for="boleta" class="labels">Número de boleta: </label>
             <input type="number" id="boleta" name="boleta" class="inputs">
-            <input type="submit"
-            class="button" value="Buscar">
-        </form>
-        <!-- Búsqueda por curp -->
-        <form action="consultaBusqueda.php" method="" id="bus_curp" class="formulario_busqueda" style="display: none;">
+            <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('boleta')">
+        </div>
+        <!-- Consulta por curp -->
+        <div id="form-curp" class="datos_consulta" style="display: none;">
           <label for="curp" class="labels">CURP: </label>
           <input type="text" id="curp" name="curp" class="inputs">
-          <input type="submit" class="button" value="Buscar">
-        </form>
-        <!-- Busqueda por grupo asignado -->
-        <form action="consultaBusqueda.php" method="" id="bus_grupo"  class="formulario_busqueda" style="display: none;">
+          <input type="submit" class="button" value="Buscar"  onclick="selectorOperacion('curp')">
+        </div>
+        <!-- Consulta por grupo asignado -->
+        <div id="form-grupo"  class="datos_consulta" style="display: none;">
           <label for="grupo" class="labels">Grupo asignado: </label>
           <input type="text" id="grupo" name="grupo" class="inputs">
-          <input type="submit" class="button" value="Buscar">
-        </form>
-        <!-- Busqueda por hora asignada -->
-        <form action="consultaBusqueda.php" method="" id="bus_hora" class="formulario_busqueda" style="display: none;">
+          <input type="submit" class="button" value="Buscar"  onclick="selectorOperacion('grupo')">
+        </div>
+        <!-- Consulta por hora asignada -->
+        <div id="form-hora" class="datos_consulta" style="display: none;" >
           <label for="hora" class="labels">Hora de inicio: </label>
           <input type="time" id="hora" name="hora" class="inputs">
-          <input type="submit" class="button" value="Buscar">
-        </form>
-        <!-- Muestra de todos -->
-        <form action="consultaBusqueda.php" method="" id="bus_todos" class="formulario_busqueda" style="display: none;">
-        </form>
-        <!-- Muestra la tabla con la información de los usuarios-->
-        <div id="tabla">
-          <table>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+          <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('hora')">
+        </div>
+
+        <!-- Muestra la tabla con la información de los usuarios en búqueda -->
+        <div id="tabla-alumnos" style="display: none;">          
+          <table id="tabla-informacion-alumnos" cellspacing="0">
+              <tr id="tr-1">
+                <th>No. Boleta</th>
+              </tr>
+              <tr id="tr-2">
+                <th>CURP</th>
+              </tr>
+              <tr id="tr-3">
+                <th>Nombre</th>
+              </tr>
+              <tr id="tr-4">
+                <th>Fecha <br> nacimiento</th>
+              </tr>
+              <tr id="tr-5">
+                <th>Número de <br> teléfono</th>
+              </tr>
+              <tr id="tr-6">
+                <th>Correo <br> electrónico</th>
+              </tr>
+              <tr id="tr-7">
+                <th>Grupo <br> asignado</th>
+              </tr>
+              <tr id="tr-8">
+                <th>Hora <br> asignada</th>
+              </tr>
+              <tr id="tr-9">
+                <th>Escuela de <br> procedencia</th>
+              </tr>
+              <tr id="tr-10">
+                <th>Entidad<br> federativa  de <br> procedencia</th>
               </tr>
           </table>
         </div>
-      </div>
+        
+        <!-- 
+            Sección de actualización
+        -->
+        <div>
+        </div>
+
+       
     </section>
   </main>
 
