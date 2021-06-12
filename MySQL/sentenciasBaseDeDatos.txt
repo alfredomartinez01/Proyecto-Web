@@ -1,0 +1,55 @@
+BASE DE DATOS:
+
+create table alumno(
+curp varchar(30) NOT NULL PRIMARY KEY,
+noBoleta varchar(30),
+nombre varchar(30),
+apPaterno varchar(30),
+apMaterno varchar(30),
+fechaNacimiento datetime,
+genero varchar(30),
+escProdecendia varchar(30),
+entFedProced varchar(30),
+nomEsc varchar(30),
+promedio float,
+escom varchar(30),
+calleYNum varchar(30),
+Colonia varchar(30),
+codigoPostal int,
+telefono int,
+correoElect varchar(30)
+);
+
+create table admin(
+idAdmin int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+usuario varchar(30),
+password varchar(30)
+);
+
+create table grupo(
+grupo varchar(30) NOT NULL PRIMARY KEY,
+salon int
+);
+
+create table examen(
+examenID int NOT NULL PRIMARY KEY,
+grupo varchar(30),
+curp varchar(30),
+inscritos int,
+FOREIGN KEY (grupo) REFERENCES grupo(grupo),
+FOREIGN KEY (curp) REFERENCES alumno(curp)
+);
+
+
+Ejemplo:
+
+INSERT INTO alumno VALUES('PEOC980406HDFRCR08', '2014140550','Cristan Antonio', 'Perez', 'Ochoa', '1998-04-06', 'H', 'CECYT No. 14', 'Ciudad de Mexico', 'Luis Enriqur Erro Soler', 7, '1ra opcion', 'No. 73 Av. 14', 'Col. Ignacio Zaragoza', 15000, 1234 ,'tony@hotmail.com');
+
+UPDATE alumno SET nombre = 'pedro' WHERE noBoleta='2014140550';
+
+UPDATE alumno SET noBoleta = '$boleta',nombre = '$nombre', apPaterno = '$apPaterno', apMaterno = '$apMaterno', fechaNacimiento = '1998-02-01', genero='$genero', escProdecendia='$escProdencia',entFedProced='$entFed',nomEsc = '$nombEsc',promedio = 6, escom = '$escom', calleYNum = '$numYCalle', Colonia = '$Col',codigoPostal = 55, telefono = 55, correoElect = '$correo' WHERE curp='PEOC980406HDFRCR08';
+
+
+DELETE FROM alumno WHERE noBoleta = '2014140550';
+
+mysqldump -u username -p prueba > data-dump.sql

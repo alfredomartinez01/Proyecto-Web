@@ -11,7 +11,6 @@
 
 #contenido img{
     width: 100%;
-    transition: all 300ms;
 }
 
 
@@ -31,4 +30,22 @@
 
 #contenido img:hover{
     transform: scale(1.05);
+}
+
+@media(min-width:600px){
+    #contenido img{
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media(min-width:1200px){
+    #contenido img{
+        width: 100%;
+        max-width: 750px;
+    }
+
+    #contenido h3{
+        font-size: 40px;
+    }
 }
