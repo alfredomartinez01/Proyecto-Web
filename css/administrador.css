@@ -128,8 +128,11 @@ label {
 }
 
 /* Para la parte de administrador  */
-
-
+@media (max-width: 800px){
+  #login{    
+    width: 400px;
+  }
+}
 @media (max-width: 650px){
   #login{    
     width: 400px;
@@ -138,5 +141,55 @@ label {
 @media (max-width: 520px){
   #login{    
     width: 390px;
+  }
+}
+/* media */
+@media(min-width:50px){
+  header{
+      height: 80px;
+  }    
+  nav{
+      height: 40px;
+      margin-top: 85px;
+  }    
+  nav a{
+      font-size: 17px;
+  }     
+}
+@media(min-width:600px){
+  header{
+      height: 80px;
+  }    
+  nav{
+      height: 40px;
+      margin-top: 85px;
+  }    
+  nav a{
+      font-size: 17px;
+  }     
+}
+@media(min-width:900px){
+  header{
+      height: 80px;
+  }    
+  nav{
+      height: 40px;
+      margin-top: 85px;
+  }    
+  nav a{
+      font-size: 17px;
+  }    
+}
+
+@media(min-width:1200px){
+  header{
+      height: 100px;
+  }
+  nav{
+      height: 40px;
+      margin-top: 105px;
+  }
+  nav a{
+      font-size: 20px;
   }
 }

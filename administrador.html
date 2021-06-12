@@ -16,28 +16,34 @@
   <script src="javascript/admin.js"></script>
 </head>
 
-<body>
+<body >
   <header>
-    <div class="contenedor">
-      <img class="escom" src="img/logo_escom.png" />
-      <h1>Escuela Superior de C&oacute;mputo</h1>
-      <img class="ipn" src="img/logo_ipn.png" />
+    <div class="contenedor" >
+      <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
+      <h1> Escuela Superior de C&oacute;mputo </h1>
+      <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
+
 
       <!-- Menu de navegación -->
       <nav>
         <a href="main.html" target="_parent">Inicio</a>
-        <ul>
+        
+        <label id="label-menu" for="menu"><img id="imagen-menu" src="img/menu.png" alt="menu"></label>
+        <input type="checkbox" onchange="hamburguesa()" name="menu" id="menu" >
+
+        <ul id="navegacion" onclick="cerrarMenu()">
           <li onclick="menu(4)">Eliminar alumno</li>
           <li onclick="menu(3)">Actualizar alumno</li>
           <li onclick="menu(2)">Buscar alumno</li>
           <li onclick="menu(1)">Registrar alumno</li>
         </ul>
+        
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="administrador">
+    <section class="administrador" onclick="cerrarMenu()">
       <h2>ADMINISTRACIÓN</h2>
       <h3>DE ALUMNOS DE NUEVO INGRESO</h3>
       <h4>(AGOSTO 2021)</h4>
@@ -66,7 +72,7 @@
             <option value="todos">Todos los registros</option>
           </select>
         </div>
-         <!-- 
+        <!-- 
             Sección de eliminación
         -->
         <div id="eliminacion" style="display: none;">
@@ -86,71 +92,89 @@
         <!-- Consulta por número de boleta -->
         <div id="form-boleta" class="datos_consulta" style="display: none;">
           <label for="boleta" class="labels">Número de boleta: </label>
-            <input type="number" id="boleta" name="boleta" class="inputs">
-            <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('boleta')">
+          <input type="number" id="boleta" name="boleta" class="inputs">
+          <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('boleta')">
         </div>
         <!-- Consulta por curp -->
         <div id="form-curp" class="datos_consulta" style="display: none;">
           <label for="curp" class="labels">CURP: </label>
           <input type="text" id="curp" name="curp" class="inputs">
-          <input type="submit" class="button" value="Buscar"  onclick="selectorOperacion('curp')">
+          <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('curp')">
         </div>
         <!-- Consulta por grupo asignado -->
-        <div id="form-grupo"  class="datos_consulta" style="display: none;">
+        <div id="form-grupo" class="datos_consulta" style="display: none;">
           <label for="grupo" class="labels">Grupo asignado: </label>
           <input type="text" id="grupo" name="grupo" class="inputs">
-          <input type="submit" class="button" value="Buscar"  onclick="selectorOperacion('grupo')">
+          <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('grupo')">
         </div>
         <!-- Consulta por hora asignada -->
-        <div id="form-hora" class="datos_consulta" style="display: none;" >
+        <div id="form-hora" class="datos_consulta" style="display: none;">
           <label for="hora" class="labels">Hora de inicio: </label>
           <input type="time" id="hora" name="hora" class="inputs">
           <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('hora')">
         </div>
 
         <!-- Muestra la tabla con la información de los usuarios en búqueda -->
-        <div id="tabla-alumnos" style="display: none;">          
+        <div id="tabla-alumnos" style="display: none;">
           <table id="tabla-informacion-alumnos" cellspacing="0">
-              <tr id="tr-1">
-                <th>No. Boleta</th>
-              </tr>
-              <tr id="tr-2">
-                <th>CURP</th>
-              </tr>
-              <tr id="tr-3">
-                <th>Nombre</th>
-              </tr>
-              <tr id="tr-4">
-                <th>Fecha <br> nacimiento</th>
-              </tr>
-              <tr id="tr-5">
-                <th>Número de <br> teléfono</th>
-              </tr>
-              <tr id="tr-6">
-                <th>Correo <br> electrónico</th>
-              </tr>
-              <tr id="tr-7">
-                <th>Grupo <br> asignado</th>
-              </tr>
-              <tr id="tr-8">
-                <th>Hora <br> asignada</th>
-              </tr>
-              <tr id="tr-9">
-                <th>Escuela de <br> procedencia</th>
-              </tr>
-              <tr id="tr-10">
-                <th>Entidad<br> federativa  de <br> procedencia</th>
-              </tr>
+            <tr id="tr-1">
+              <th>No. Boleta</th>
+            </tr>
+            <tr id="tr-2">
+              <th>CURP</th>
+            </tr>
+            <tr id="tr-3">
+              <th>Nombre</th>
+            </tr>
+            <tr id="tr-4">
+              <th>Fecha <br> nacimiento</th>
+            </tr>
+            <tr id="tr-5">
+              <th>Número de <br> teléfono</th>
+            </tr>
+            <tr id="tr-6">
+              <th>Correo <br> electrónico</th>
+            </tr>
+            <tr id="tr-7">
+              <th>Grupo <br> asignado</th>
+            </tr>
+            <tr id="tr-8">
+              <th>Hora <br> asignada</th>
+            </tr>
+            <tr id="tr-9">
+              <th>Escuela de <br> procedencia</th>
+            </tr>
+            <tr id="tr-10">
+              <th>Entidad<br> federativa de <br> procedencia</th>
+            </tr>
           </table>
         </div>
-        
+
         <!-- 
             Sección de actualización
         -->
-        <div>
+        <div id="actualizacion" class="datos_actualizacion" style="display: none;">
+          <h2> Por favor ingrese el número de boleta del usuario a actualizar.</h2>
+          <label for="boleta" class="labels">Número de boleta: </label>
+          <input type="number" id="boleta" name="boleta" class="inputs">
+          <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('boleta')">
+        </div>
+        <!-- Impresion de los datos de alumno -->
+        <div id="datos-alumno" class="datos_actualizacion" style="display: none;">
+          <p class="labels" id="alumno-boleta"></p>
+          <h4 id="instrucciones-actualiza">Modifique un valor y después actualice. </h4>
+
+          <label for="alumno-telefono" class="labels">Número de telefono </label>
+          <input type="number" id="alumno-telefono" name="alumno-telefono" class="inputs">
+
+          <label for="alumno-correo" class="labels">Correo electrónico</label>
+          <input type="text" id="alumno-correo" name="alumno-correo" class="inputs">
+
+          <input type="submit" class="button" id="boton-eliminar-datos" value="Actualizar">
+
         </div>
 
-       
+
     </section>
   </main>
 
