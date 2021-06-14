@@ -101,7 +101,7 @@ try {
     $mail -> Port = 587;                              // Puerto TCP para conectarse, use 465 para `PHPMailer :: ENCRYPTION_SMTPS` arriba
 
     // Destinatarios 
-    $mail -> setFrom ( 'registro.escom.webmx@gmail.com' , 'Admin' );
+    $mail -> setFrom ( 'registro.escom.webmx@gmail.com' , 'Adminnistración de ESCOM' );
     $mail -> addAddress ($email);     // Agrega un destinatario 
 
     // Archivos adjuntos 
@@ -120,8 +120,8 @@ try {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Datos enviados</title>
-        <link rel="stylesheet" href="estilo.css">
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../css/estilo.css">
+        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <style type="text/css">
 
          #mensaje{
@@ -184,9 +184,9 @@ try {
        
         <header>
             <div class="contenedor">
-                <img class="escom" src="img/logo_escom.png">
+                <img class="escom" src="../img/logo_escom.png">
                 <h1> Escuela Superior de C&oacute;mputo </h1>
-                <img class="ipn" src="img/logo_ipn.png">
+                <img class="ipn" src="../img/logo_ipn.png">
             
                 <nav> 
                     <a href="../main.html" target="">Inicio</a>
@@ -210,8 +210,8 @@ try {
         <footer id="envia">
             <div class="contenedor">
                 <div class="redes">
-                    <a class="icon-face" target="_blank" href="https://www.facebook.com/escomipnmx/"><img src="img/fb.png"  alt="link facebook"></a>
-                    <a class="icon-twitter" target="_blank" href="https://twitter.com/escomunidad"><img src="img/twitt.png" alt="link twitter"></a>
+                    <a class="icon-face" target="_blank" href="https://www.facebook.com/escomipnmx/"><img src="../img/fb.png"  alt="link facebook"></a>
+                    <a class="icon-twitter" target="_blank" href="https://twitter.com/escomunidad"><img src="../img/twitt.png" alt="link twitter"></a>
                 </div>
             </div>
         </footer>
