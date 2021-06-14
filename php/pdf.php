@@ -26,7 +26,7 @@ class PDF extends tFPDF
       function Header()
       {
           // Logo
-          $this->Image('img/header.png',0,0,210); //left, top, escala 
+          $this->Image('../img/header.png',0,0,210); //left, top, escala 
           $this->SetX(66);
           $this->SetFont('Helvetica','B',20);
           $this->SetTextColor(182,182,183);
@@ -38,7 +38,7 @@ class PDF extends tFPDF
       function Footer()
       {
           // Posición: a 1.5 cm del final
-          $this->Image('img/footer_pdf.png',0,262,210);
+          $this->Image('../img/footer_pdf.png',0,262,210);
           $this->SetY(-10);
           // Arial italic 8
           $this->SetFont('Helvetica','',9);
