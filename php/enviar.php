@@ -55,6 +55,7 @@ class PDF extends tFPDF
   $pdf->AddPage();
   $pdf->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
   $pdf->SetFont('DejaVu','',12);
+    $pdf->Cell(0,8,'Número de boleta: '.$nDeboleta,0,1);
     $pdf->Cell(0,8,'Nombre: '.$nombre, 0,1);
     $pdf->Cell(0,8,'Apellido Paterno: ' .$aPaterno ,0,1);
     $pdf->Cell(0,8,'Apellido Materno: '.$aMaterno,0,1);
@@ -63,8 +64,7 @@ class PDF extends tFPDF
     $pdf->Cell(0,8,'CURP: '.$CURP,0,1);
     $pdf->SetX(95);
     $pdf->Cell(0,10,'Dirección',0,1);
-    $pdf->Cell(0,8,'Calle: '.$calle,0,1);
-    $pdf->Cell(0,10,'Número: ' .$numero,0,1);
+    $pdf->Cell(0,8,'Calle y número: '.$calle.'/'.$numero,0,1);
     $pdf->Cell(0,10,'Colonia: ' .$colonia,0,1);
     $pdf->Cell(0,10,'Código Postal: ' .$codigo,0,1);
     $pdf->Cell(0,10,'Teléfono: ' .$telefono,0,1);
@@ -81,6 +81,7 @@ class PDF extends tFPDF
     
     //referencia a la clase phpmailer
     use  PHPMailer \ PHPMailer \ PHPMailer ;
+    use  PHPMailer \ PHPMailer \SMTP;
     use  PHPMailer \ PHPMailer \ Exception ;
     
     require  'enviar/Exception.php' ;

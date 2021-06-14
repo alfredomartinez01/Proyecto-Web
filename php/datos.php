@@ -18,24 +18,26 @@
 	$estado =$_POST["estado"];
 	$promedio =$_POST["Promedio"];
 	$opcion =$_POST["Opcion"];
+
+    $callenum=$calle.' '.$numero;
+   // echo $callenum;
 //iniciamos la conexion a la BD
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db="datosweb";
+    $db="examen";
     // Create connection
-    $conn = new mysqli($servername, $username, "", $db);
+    $conn = mysqli_connect("localhost", "root", "", "examen");
     $conn->set_charset("utf8");
     // Check connection
-   if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+   if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
     }
     /*echo "Connected successfully";*/
 
-	  $sql = "INSERT INTO alumno VALUES ($nDeboleta, '$nombre', '$aPaterno', '$aMaterno', '$fNacimiento', '$genero', '$CURP', '$calle', $numero, '$colonia', $codigo,
-	  '$telefono', '$email', '$escuelaP', '$otra', '$estado', $promedio, '$opcion' )";
-	
-	 if ($conn->query($sql) === TRUE) {
+	  $sql = "INSERT INTO alumno VALUES('$CURP', '$nDeboleta', '$nombre', '$aPaterno', '$aMaterno', '$fNacimiento', '$genero', '$escuelaP', '$estado', '$otra', $promedio, '$opcion', '$callenum', '$colonia', $codigo, $telefono, '$email')";
+	//(curp, noBoleta, nombre, apPaterno, apMaterno, fechaNacimiento, genero, escProcedencia, entFedProced, nomEsc, promedio, escom, calleYNum, Colonia, codigoPostal, telefono, correoElect)
+	 if (mysqli_query($conn, $sql)) {
 	  //echo "New record created successfully";
 	  } else {
         echo'<script type="text/javascript">
@@ -43,7 +45,7 @@
         window.location.href="../formulario.html";
         </script>';
 	  }
-	  $conn->close();
+	 mysqli_close($conn);
 //iniciamos session
       session_start();
     $_SESSION["boleta"]=$nDeboleta;
