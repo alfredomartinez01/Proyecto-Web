@@ -14,11 +14,26 @@
   <link rel="stylesheet" href="css/inputs.css">
 
   <script src="javascript/admin.js"></script>
+  <script>
+    function comprobarSesion(){
+      if(sessionStorage.getItem('usuario') == undefined){
+        location.href ="./administrador-login.html";
+      }
+    }
+  </script>
+  <style>
+    .notFound {
+      margin-top: 10px;
+      color: red;
+      font-weight: 1000;
+      text-align: center;
+    }
+  </style>
 </head>
 
-<body >
+<body onload="comprobarSesion()" >
   <header>
-    <div class="contenedor" >
+    <div class="contenedor">
       <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
       <h1> Escuela Superior de C&oacute;mputo </h1>
       <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
@@ -27,9 +42,9 @@
       <!-- Menu de navegación -->
       <nav>
         <a href="main.html" target="_parent">Inicio</a>
-        
+
         <label id="label-menu" for="menu"><img id="imagen-menu" src="img/menu.png" alt="menu"></label>
-        <input type="checkbox" onchange="hamburguesa()" name="menu" id="menu" >
+        <input type="checkbox" onchange="hamburguesa()" name="menu" id="menu">
 
         <ul id="navegacion" onclick="cerrarMenu()">
           <li onclick="menu(4)">Eliminar alumno</li>
@@ -37,7 +52,7 @@
           <li onclick="menu(2)">Buscar alumno</li>
           <li onclick="menu(1)">Registrar alumno</li>
         </ul>
-        
+
       </nav>
     </div>
   </header>
@@ -113,7 +128,7 @@
           <input type="time" id="hora" name="hora" class="inputs">
           <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('hora')">
         </div>
-
+        <p id="no-Busca" style="display: none;" class="notFound">Sin coincidencias.</p>
         <!-- Muestra la tabla con la información de los usuarios en búqueda -->
         <div id="tabla-alumnos" style="display: none;">
           <table id="tabla-informacion-alumnos" cellspacing="0">
@@ -156,9 +171,10 @@
         <div id="actualizacion" class="datos_actualizacion" style="display: none;">
           <h2> Por favor ingrese el número de boleta del usuario a actualizar.</h2>
           <label for="boleta" class="labels">Número de boleta: </label>
-          <input type="number" id="boleta" name="boleta" class="inputs">
+          <input type="number" id="actualizarPorboleta" name="boleta" class="inputs">
           <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('boleta')">
         </div>
+        <p id="no-EncuentraActualiza" style="display: none;" class="notFound">Sin coincidencias.</p>
         <!-- Impresion de los datos de alumno -->
         <div id="datos-alumno" class="datos_actualizacion" style="display: none;">
           <p class="labels" id="alumno-boleta"></p>
@@ -171,9 +187,8 @@
           <input type="text" id="alumno-correo" name="alumno-correo" class="inputs">
 
           <input type="submit" class="button" id="boton-eliminar-datos" value="Actualizar">
-
         </div>
-
+        <p id="no-Actualiza" style="display: none;" class="notFound">Hubo un error, verifique sus datos.</p>
 
     </section>
   </main>

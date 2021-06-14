@@ -80,7 +80,6 @@ function selectorBusqueda() {
     /* Recoloca la búsqueda */
     var busqueda = document.getElementById("busqueda");
     busqueda.style.display = "block";
-
     var selector = document.getElementById("tipo_busqueda");
     var seleccionado = selector.options[selector.selectedIndex].value;
 
@@ -154,7 +153,7 @@ function selectorOperacion(tipo) {
     if (bloque_busqueda.style.display != "none") { // Si la busqueda está activa
         fillTable(tipo);
     } else if (bloque_actualizacion.style.display != "none") {// Si la actualizacion está activa
-        setInformation(tipo);
+        setInformation();
     } else if (bloque_eliminacion.style.display != "none") {// Si la eliminacion está activa
         deleteInformation(tipo);
     }
@@ -169,140 +168,193 @@ function fillTable(tipo) {
             filas[i].parentNode.removeChild(filas[i]);
         }
     }
-    /* Muestra la tabla */
-    var tabla = document.getElementById("tabla-alumnos");
-    tabla.style.display = "block";
 
     /* Validacion de los datos */
 
     /* Peticiones dependiendo del campo */
     var alumnos = [];
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/manejoAlumno.php", false);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     switch (tipo) {
+        case "boleta":
+            var boleta = document.getElementById("boleta").value;
+
+            xhr.onload = function () {
+                var response = this.responseText;
+                alumnos = JSON.parse(response);
+            }
+            var informacion = "tipo=" + tipo + "&operacion=buscar" + "&boleta=" + boleta;
+            xhr.send(informacion);
+            break;
+        case "curp":
+            var curp = document.getElementById("curp").value;
+            xhr.onload = function () {
+                var response = this.responseText;
+                alumnos = JSON.parse(response);
+            }
+            var informacion = "tipo=" + tipo + "&operacion=buscar" + "&curp=" + curp;
+            xhr.send(informacion);
+            break;
+        case "grupo":
+            var grupo = document.getElementById("grupo").value;
+            xhr.onload = function () {
+                var response = this.responseText;
+                alumnos = JSON.parse(response);
+            }
+            var informacion = "tipo=" + tipo + "&operacion=buscar" + "&grupo=" + grupo;
+            xhr.send(informacion);
+            break;
+        case "hora":
+            var hora = document.getElementById("hora").value;
+            xhr.onload = function () {
+                var response = this.responseText;
+                alumnos = JSON.parse(response);
+            }
+            var informacion = "tipo=" + tipo + "&operacion=buscar" + "&hora=" + hora;
+            xhr.send(informacion);
+            break;
         case "todo":
-            /* Espacio para la peticion */
-            console.log("hola");
+            xhr.onload = function () {
+                var response = this.responseText;
+                alumnos = JSON.parse(response);
+            }
+            var informacion = "tipo=" + tipo + "&operacion=buscar";
+            xhr.send(informacion);
             break;
     }
 
-    // Alumnos a mostrar
-    alumnos = [
-        {
-            "boleta": 2020654545,
-            "curp": "MARA011ASJDKJASDHJD",
-            "nombre": "Alfredo Rodrigo Lopez Rodriguez",
-            "fechaNac": "2001-11-16",
-            "telefono": 5532983339,
-            "correo": "alfredomartinezruiz01@gmail.com",
-            "grupo": "2CM14",
-            "hora": "13:00",
-            "escuela": "Centro de estudios científicos y tecnológicos No. 3",
-            "estado": "Ciudad de México"
-        },
-        {
-            "boleta": 2020654545,
-            "curp": "MARA011ASJDKJASDHJD",
-            "nombre": "Alfredo Rodrigo Lopez Rodriguez",
-            "fechaNac": "2001-11-16",
-            "telefono": 5532983339,
-            "correo": "alfredomartinezruiz01@gmail.com",
-            "grupo": "2CM14",
-            "hora": "13:00",
-            "escuela": "Centro de estudios científicos y tecnológicos No. 3",
-            "estado": "Ciudad de México"
-        }
-    ];
-
-
-
     /* Inserción en la tabla */
-    for (let i = 1; i < 11; i++) {
-        var row = document.getElementById(`tr-${i}`); // Obtenemos cada fila
-        var cell;
+    if (alumnos) {
+        /* Muestra la tabla */
+        var tabla = document.getElementById("tabla-alumnos");
+        tabla.style.display = "block";
+        /* Oculta mensaje de error */
+        var error = document.getElementById("no-Busca");
+        error.style.display = "none";
 
-        for (let o = 0; o < alumnos.length; o++) {
-            var cell = document.createElement('td');
-            switch (i) {
-                case 1:
-                    cell.innerHTML = alumnos[o].boleta;
-                    break;
-                case 2:
-                    cell.innerHTML = alumnos[o].curp;
-                    break;
-                case 3:
-                    cell.innerHTML = alumnos[o].nombre;
-                    break;
-                case 4:
-                    cell.innerHTML = alumnos[o].fechaNac;
-                    break;
-                case 5:
-                    cell.innerHTML = alumnos[o].telefono;
-                    break;
-                case 6:
-                    cell.innerHTML = alumnos[o].correo;
-                    break;
-                case 7:
-                    cell.innerHTML = alumnos[o].grupo;
-                    break;
-                case 8:
-                    cell.innerHTML = alumnos[o].hora;
-                    break;
-                case 9:
-                    cell.innerHTML = alumnos[o].escuela;
-                    break;
-                case 10:
-                    cell.innerHTML = alumnos[o].estado;
-                    break;
+        for (let i = 1; i < 11; i++) {
+            var row = document.getElementById(`tr-${i}`); // Obtenemos cada fila
+            var cell;
+
+            for (let o = 0; o < alumnos.length; o++) {
+                var cell = document.createElement('td');
+                switch (i) {
+                    case 1:
+                        if (alumnos[o].boleta)
+                            cell.innerHTML = alumnos[o].boleta;
+                        break;
+                    case 2:
+                        if (alumnos[o].curp)
+                            // Arreglamos problemas de longitud
+                            var texto = document.createTextNode((alumnos[o].curp).slice(0, 13));
+                        cell.appendChild(texto);
+                        cell.appendChild(document.createElement("wbr"));
+                        texto = document.createTextNode((alumnos[o].curp).slice(13, 18));
+                        cell.appendChild(texto);
+                        break;
+                    case 3:
+                        if (alumnos[o].nombre)
+                            cell.innerHTML = alumnos[o].nombre;
+                        break;
+                    case 4:
+                        if (alumnos[o].fechaNac)
+                            cell.innerHTML = (alumnos[o].fechaNac).slice(0, 10);
+                        break;
+                    case 5:
+                        if (alumnos[o].telefono)
+                            cell.innerHTML = alumnos[o].telefono;
+                        break;
+                    case 6:
+                        if (alumnos[o].correoElect) {
+                            // Arreglamos problemas de longitud
+                            var texto = document.createTextNode((alumnos[o].correoElect).slice(0, 15));
+                            cell.appendChild(texto);
+                            for (var k = 15; k < (alumnos[o].correoElect).length; k += 15) {
+                                cell.appendChild(document.createElement("wbr"));
+                                texto = document.createTextNode((alumnos[o].correoElect).slice(k, k + 15));
+                                cell.appendChild(texto);
+                            }
+                        }
+                        break;
+                    case 7:
+                        if (alumnos[o].grupo)
+                            cell.innerHTML = alumnos[o].grupo;
+                        break;
+                    case 8:
+                        if (alumnos[o].hora)
+                            cell.innerHTML = (alumnos[o].hora).slice(0, 5);
+                        break;
+                    case 9:
+                        if (alumnos[o].escProcedencia)
+                            cell.innerHTML = alumnos[o].escProcedencia;
+                        break;
+                    case 10:
+                        if (alumnos[o].entFedProcedencia)
+                            cell.innerHTML = alumnos[o].entFedProcedencia;
+                        break;
+                }
+                row.appendChild(cell);
             }
-            row.appendChild(cell);
         }
+        return alumnos.length;
+    } else {
+        /* Muestra mensaje de error */
+        var error = document.getElementById("no-Busca");
+        error.style.display = "block";
     }
+
 }
-function insertarSalto(palabra){
-    for(var i = 0; i <palabra.length; i++){
-        if(i%12==0 && i!=0){
-            palabra
-        }
-    }
-}
+
 /* Muestra el contenido del usuario */
-function setInformation(tipo) {
+function setInformation() {
     /* Validacion de los datos */
 
     /* Realiza la peticion */
-    var alumno;
+    /* Peticiones dependiendo del campo */
+    var alumno = [];
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/manejoAlumno.php", false);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var boleta = document.getElementById("actualizarPorboleta").value;
 
+    xhr.onload = function () {
+        var response = this.responseText;
+        alumno = JSON.parse(response);
+    }
+    var informacion = "tipo=boleta" + "&operacion=buscar" + "&boleta=" + boleta;
 
-    // Alumno a mostrar
-    alumno = {
-        "boleta": 2020654545,
-        "curp": "MARA011ASJDKJASDHJD",
-        "nombre": "Alfredo Rodrigo Lopez Rodriguez",
-        "fechaNac": "2001-11-16",
-        "telefono": 5532983339,
-        "correo": "alfredomartinezruiz01@gmail.com",
-        "grupo": "2CM14",
-        "hora": "13:00",
-        "escuela": "Centro de estudios científicos y tecnológicos No. 3",
-        "estado": "Ciudad de México"
+    xhr.send(informacion);
+    if (alumno) {
+        /* Oculta mensaje de error */
+        var error = document.getElementById("no-EncuentraActualiza");
+        error.style.display = "none";
+
+        var datos = document.getElementById('datos-alumno');
+        datos.style.display = "block";
+
+        var boleta = document.getElementById('alumno-boleta');
+        boleta.innerHTML = "Número de boleta: " + alumno[0].boleta;
+
+        var telefono = document.getElementById('alumno-telefono');
+        telefono.value = alumno[0].telefono;
+        telefono.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
+
+        var correo = document.getElementById('alumno-correo');
+        correo.value = alumno[0].correoElect;
+        correo.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
+
+        // Desabilitando el botón
+        var boton_eliminacion = document.getElementById('boton-eliminar-datos');
+        boton_eliminacion.style.display = "none";
+    } else {
+        /* Muestra mensaje de error y datos */
+        var error = document.getElementById("no-EncuentraActualiza");
+        error.style.display = "block";
+        var datos = document.getElementById('datos-alumno');
+        datos.style.display = "none";
     }
 
-    var datos = document.getElementById('datos-alumno');
-    datos.style.display = "block";
-
-    var boleta = document.getElementById('alumno-boleta');
-    boleta.innerHTML = "Número de boleta: " + alumno.boleta;
-    ;
-    var telefono = document.getElementById('alumno-telefono');
-    telefono.value = alumno.telefono;
-    telefono.setAttribute("onchange", `muestraActualizar(${alumno.boleta})`);
-
-    var correo = document.getElementById('alumno-correo');
-    correo.value = alumno.correo;
-    correo.setAttribute("onchange", `muestraActualizar(${alumno.boleta})`);
-
-    // Desabilitando el botón
-    var boton_eliminacion = document.getElementById('boton-eliminar-datos');
-    boton_eliminacion.style.display = "none";
 }
 
 /* Activa el botón de actualizar */
@@ -315,30 +367,105 @@ function muestraActualizar(boleta) {
 function actualiza(boleta) {
     var telefono = document.getElementById('alumno-telefono');
     var correo = document.getElementById('alumno-correo');
-    console.log(boleta);
-    var alumno = {
-        "boleta": boleta,
-        "telefono": telefono.value,
-        "correo": correo.value
-    }
 
     /* Realiza petición para actualización de los datos */
-    alert(`Alumno con boleta ${boleta} actualizado correctamente`);
-    menu(3);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/manejoAlumno.php", false);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var response;
+    xhr.onload = function () {
+        response = this.responseText;
+    }
+    var informacion = "tipo=boleta" + "&operacion=actualizar" + "&boleta=" + boleta + "&correo=" + correo.value + "&telefono=" + telefono.value;
+
+    xhr.send(informacion);
+    if (response == "1") {
+        alert(`Alumno con boleta ${boleta} actualizado correctamente`);
+        menu(3);
+    } else {
+        console.log(response);
+        /* Muestra mensaje de error */
+        var error = document.getElementById("no-Actualiza");
+        error.style.display = "block";
+    }
+
 }
 function deleteInformation(tipo) {
     /* Validacion de los datos */
 
-    /* Obtiene el número de registros */
-    var registros = 16;
+    // Reutilizamos filTable para saber el número de registros    
+    var registros = fillTable(tipo);
+    /* Oculta la tabla */
+    var tabla = document.getElementById("tabla-alumnos");
+    tabla.style.display = "none";
+    if (registros) {
+        if (confirm(`Serán eliminados ${registros} registros`)) {
+            /* Obtiene el número de registros */
+            /* Peticiones dependiendo del campo */
+            var response;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../php/manejoAlumno.php", false);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            switch (tipo) {
+                case "boleta":
+                    var boleta = document.getElementById("boleta").value;
 
-    /* Confirma la eliminación de los registros */
-    if (confirm(`Serán eliminados ${registros} registros`)) {
-        // Se eliminan
-        alert(`${registros} registros fueron eliminados`);
+                    xhr.onload = function () {
+                        vresponse = this.responseText;
+                    }
+                    var informacion = "tipo=" + tipo + "&operacion=eliminar" + "&boleta=" + boleta;
+                    xhr.send(informacion);
+                    break;
+                case "curp":
+                    var curp = document.getElementById("curp").value;
+                    xhr.onload = function () {
+                        response = this.responseText;
+                    }
+                    var informacion = "tipo=" + tipo + "&operacion=eliminar" + "&curp=" + curp;
+                    xhr.send(informacion);
+                    break;
+                case "grupo":
+                    var grupo = document.getElementById("grupo").value;
+                    xhr.onload = function () {
+                        response = this.responseText;
+                    }
+                    var informacion = "tipo=" + tipo + "&operacion=eliminar" + "&grupo=" + grupo;
+                    xhr.send(informacion);
+                    break;
+                case "hora":
+                    var hora = document.getElementById("hora").value;
+                    xhr.onload = function () {
+                        response = this.responseText;
+                    }
+                    var informacion = "tipo=" + tipo + "&operacion=eliminar" + "&hora=" + hora;
+                    xhr.send(informacion);
+                    break;
+                case "todo":
+                    xhr.onload = function () {
+                        response = this.responseText;
+                    }
+                    var informacion = "tipo=" + tipo + "&operacion=eliminar";
+                    xhr.send(informacion);
+                    break;
+            }
+            console.log(response);
+            if (response) {
+                alert(`${registros} registros fueron eliminados`);
+                /* Oculta mensaje de error */
+                var error = document.getElementById("no-Actualiza");
+                error.style.display = "none";
+            } else {
+                /* Muestra mensaje de error */
+                var error = document.getElementById("no-Busca");
+                error.style.display = "block";
+            }
+        }
     } else {
-        alert("No se eliminó ningún registro");
+        /* Muestra mensaje de error */
+        var error = document.getElementById("no-Busca");
+        error.style.display = "block";
     }
+
 }
 
 /* Limpia en contenido de las pestañas */
@@ -368,4 +495,10 @@ function limpiarPaginas() {
     /* Elimina las opciones de eliminacion */
     var eliminacion = document.getElementById("eliminacion");
     eliminacion.style.display = "none";
+
+    /* Oculta mensajes de error */
+    var errors = document.getElementsByClassName("notFound");
+    for (var i = 0; i < errors.length; i++) {
+        errors[i].style.display = "none";
+    }
 }

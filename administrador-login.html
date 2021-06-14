@@ -1,85 +1,137 @@
 <!DOCTYPE html public "-//w3c">
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio de sesión - Administrador</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    
-    <link rel="stylesheet" href="css/estilo.css" />
-    <link rel="stylesheet" href="css/administrador.css"/>
-    <link rel="stylesheet" href="css/inputs.css">
-  </head>
 
-  <body>
-    <header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio de sesión - Administrador</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="stylesheet" href="css/administrador.css" />
+  <link rel="stylesheet" href="css/inputs.css">
+  <style>
+    .error {
+      margin-top: 10px;
+      color: red;
+      font-weight: 1000;
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    function comprobarCredenciales() {
+      // Conexion con AJAX
+      var usuario = (document.getElementById("input-user")).value;
+      var contrasena = (document.getElementById("input-pass")).value;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "./php/validacion-credenciales.php");
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+      xhr.onload = function () {
+        var response = this.responseText;
+        console.log(response);
+        if (response == "0") { // Credenciales correctas
+          sessionStorage.setItem('usuario', usuario);
+          location.href = "./administrador.html";
+        } else if (response == "-1") {
+          // Mostramos mensaje de contraseña incorrecta
+          document.getElementById("user-error").style.display = "none";
+          document.getElementById("pass-error").style.display = "block";
+        } else {
+          // Mostramos mensaje de usuario no encontrados
+          document.getElementById("user-error").style.display = "block";
+          document.getElementById("pass-error").style.display = "none";
+        }
+      }
+      var informacion = "usuario=" + usuario + "&contrasena=" + contrasena;
+      xhr.send(informacion);
+    };
+  </script>
+  <script>
+    function eliminarSesion() {
+      if (sessionStorage.getItem('usuario')) {
+        sessionStorage.removeItem("usuario");
+      }
+    }
+  </script>
+  <script> // Enviar correo de recuperar contraseña
+    function sendMail() {
+
+    }
+  </script>
+</head>
+
+<body onload="eliminarSesion()">
+
+  <header>
+    <div class="contenedor">
+      <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
+      <h1> Escuela Superior de C&oacute;mputo </h1>
+      <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
+
+      <nav>
+        <a href="main.html" target="_parent">Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="administrador">
+      <h2>ADMINISTRACIÓN</h2>
+      <h3>DE ALUMNOS DE NUEVO INGRESO</h3>
+      <h4>(AGOSTO 2021)</h4>
+
       <div class="contenedor">
-        <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
-        <h1> Escuela Superior de C&oacute;mputo </h1>
-        <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
+        <h3>Datos de usuario</h3>
+        <div id="login">
+          <!-- Para el inicio de sesión-->
+          <div id="formulario-sesion">
+            <!-- Correo electrónico -->
+            <label for="usuario" id="label-user" class="form-center">Ingrese su correo registrado</label>
+            <input type="email" name="usuario" id="input-user" class="form-center inputs " autocomplete="off" required>
 
-        <nav>
-          <a href="main.html" target="_parent">Inicio</a>
-        </nav>
-      </div>
-    </header>
+            <!-- Contraseña -->
+            <label for="contrasena" class="form-center" id="label-pass">Ingrese su contraseña</label>
+            <input type="password" name="contrasena" id="input-pass" class="inputs form-center" autocomplete="off"
+              required>
 
-    <main>
-      <section class="administrador">       
-        <h2>ADMINISTRACIÓN</h2>
-        <h3>DE ALUMNOS DE NUEVO INGRESO</h3>
-        <h4>(AGOSTO 2021)</h4>
+            <input type="submit" value="Ingresar" onclick="comprobarCredenciales()" name="iniciar-sesion"
+              class="button form-center">
 
-        <div class="contenedor">
-            <h3>Datos de usuario</h3>
-            <div id="login">
-                <!-- Para el inicio de sesión-->
-                <form action="./php/validacion-credenciales.php" method="get"  id="formulario-sesion">
-                    <!-- Correo electrónico -->
-                    <label for="usuario"  id="label-user" class="form-center">Ingrese su correo registrado</label>
-                    <input type="email" name="usuario" id="input-user" class="form-center inputs " autocomplete="off" required>
+            <p id="user-error" style="display: none;" class="error">Usuario incorrecto o mal escrito.</p>
+            <p id="pass-error" style="display: none;" class="error">Contraseña incorrecta o mal escrita.</p>
+          </div>
 
-                    <!-- Contraseña -->
-                    <label for="contrasena" class="form-center" id="label-pass" >Ingrese su contraseña</label>
-                    <input type="password" name="contrasena" id="input-pass" class="inputs form-center" autocomplete="off" required>
+          <!-- Para la contraseña -->
+          <form action="" id="formulario-contrasena">
+            <input type="submit" value="Olvidé mi contraseña" id="boton-pass" onclick="sendMail()"
+              class="button form-center">
+          </form>
 
-                    <input type="submit" value="Ingresar" class="button form-center">
-                </form>
+          <!-- Para el registro -->
+          <form action="" id="formulario-registro">
+            <label for="registro" id="label-registro" class="form-center">¿No está registrado?</label>
+            <input type="submit" value="Registrarse" id="boton-registro" class="button form-center">
+          </form>
 
-                <!-- Para la contraseña -->
-                <form action="" id="formulario-contrasena">
-                  <input type="submit" value="Olvidé mi contraseña" id="boton-pass" class="button form-center">
-                </form>
-
-                <!-- Para el registro -->
-                <form action="" id="formulario-registro">
-                    <label for="registro" id="label-registro" class="form-center">¿No está registrado?</label>
-                    <input type="submit" value="Registrarse" id="boton-registro" class="button form-center">
-                </form>
-
-            </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="contenedor">
-        <div class="redes">
-          <a
-            class="icon-face"
-            target="_blank"
-            href="https://www.facebook.com/escomipnmx/"
-            ><img src="img/fb.png" alt="link facebook"
-          /></a>
-          <a
-            class="icon-twitter"
-            target="_blank"
-            href="https://twitter.com/escomunidad"
-            ><img src="img/twitt.png" alt="link twitter"
-          /></a>
         </div>
       </div>
-    </footer>
-  </body>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="redes">
+        <a class="icon-face" target="_blank" href="https://www.facebook.com/escomipnmx/"><img src="img/fb.png"
+            alt="link facebook" /></a>
+        <a class="icon-twitter" target="_blank" href="https://twitter.com/escomunidad"><img src="img/twitt.png"
+            alt="link twitter" /></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
