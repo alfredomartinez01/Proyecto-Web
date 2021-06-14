@@ -40,7 +40,7 @@
 	  } else {
         echo'<script type="text/javascript">
         alert("Hubo un error al guardar tus datos, posiblemente el registro ya existe, intente de nuevo");
-        window.location.href="http://127.0.0.1/proyecto/formulario.html";
+        window.location.href="../formulario.html";
         </script>';
 	  }
 	  $conn->close();
@@ -71,24 +71,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Datos Guardados</title>
         <link rel="stylesheet" href="estilo.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <style type="text/css">
         #mensaje{
         margin-top:150px;
-        margin-botton:200px;
+        margin-botton:100px;
         color:#006797;
         }
 
          p{
             text-align: center; 
             font-size: 30px;
-            margin-top:200px;
+            margin-top:250px;
         }
 
         #mensaje #boton{
             height: 40px;
             width: 110px;
             margin-right: 30px;
-            margin-top:100px;
+            margin-top:150px;
             margin-bottom: 100px;
             background-color: #00669C;
             color: white;
@@ -133,7 +134,7 @@
                 <img class="ipn" src="img/logo_ipn.png">
             
                 <nav> 
-                    <a href="http://127.0.0.1/proyecto/main.html" target="">Inicio</a>
+                    <a href="../main.html" target="">Inicio</a>
                 </nav>
         
             </div>
@@ -144,7 +145,8 @@
         <div class="contenedor">
         <div id="mensaje">
         <p>Tus datos se gurdaron correctamente</p>
-        <a href="pdf.php"> Generar pdf</a>
+        <a href="pdf.php" target="_blank"> Generar pdf</a>
+        <a href="enviar.php" target="_blank"> Enviar por correo </a>
         </div>
 
         </div>

@@ -94,7 +94,7 @@ section{
 footer{
     position: absolute;
     background-color: #B6B6B7;
-    margin-top: 80px;
+    margin-top: 400px;
     width: 100%;
     height: auto;
     left: 0;
@@ -260,7 +260,7 @@ footer{
     }  
     
     footer{
-        margin-top: 85px;
+        margin-top: 400px;
     }
 
 

@@ -76,10 +76,17 @@ class PDF extends tFPDF
     $pdf->Cell(0,10,'Estado de la República: ' .$estado,0,1);
     $pdf->Cell(0,8,'Promedio: '.$promedio,0,1);
     $pdf->Cell(0,10,'Número de opción: ' .$opcion,0,1);
-    $pdf->Output();
+    $pdf->Output('I', 'registro.pdf');
 
-    session_destroy ();
-
-
-
+    echo'<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos enviados</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+    </body>
+    </html>';
 ?>
