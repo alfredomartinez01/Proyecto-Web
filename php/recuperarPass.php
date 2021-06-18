@@ -1,12 +1,10 @@
 <?php
 include("pdf2/tfpdf.php");
-session_start();
 
-
-  
     //referencia a la clase phpmailer
-    use  PHPMailer \ PHPMailer \ PHPMailer ;
-    use  PHPMailer \ PHPMailer \ Exception ;
+    use  PHPMailer\PHPMailer\PHPMailer;
+    use  PHPMailer\PHPMailer\Exception;
+    use  PHPMailer\PHPMailer\SMTP;
     
     require  'enviar/Exception.php' ;
     require  'enviar/PHPMailer.php' ;
@@ -29,15 +27,17 @@ try {
     $mail -> setFrom ( 'registro.escom.webmx@gmail.com' , 'Adminnistración de ESCOM' );
     $mail -> addAddress ("kit_586@hotmail.es");     // Agrega un destinatario 
 
+    // Archivos adjuntos 
     // Contenido 
     $mail -> isHTML ( true );                                  // Establecer el formato de correo electrónico en HTML 
     $mail -> Subject = 'Registro de datos' ;
     $mail -> Body     = 'Bienvenido. Tu registro fue exitoso' ;
     
    $mail -> send();
+
+  
    
 } catch ( Exception  $e ) {
      echo  'No se pudo enviar el mensaje. Error de envío:', $mail-> ErrorInfo;
 }
-
 ?>
