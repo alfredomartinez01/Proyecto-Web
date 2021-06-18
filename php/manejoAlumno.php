@@ -2,8 +2,10 @@
 $tipo = $_POST['tipo'];
 $operacion = $_POST['operacion'];
 $conexion = mysqli_connect('localhost', 'root', '', 'examen');
+mysqli_set_charset($conexion,"utf8"); // AQUI AGREGUE UTF-8
+
 $resSelect;
-$alumnos;
+$alumnos = array();
 
 switch ($tipo) {
     case 'boleta':
@@ -48,6 +50,7 @@ switch ($tipo) {
             eliminaTodo();
         }
         break;
+    mysqli_close($conexion);
 }
 
 
@@ -145,31 +148,38 @@ function getAlumnosData()
     global $conexion;
     global $alumnos;
     global $resSelect;
-
+    $alumno = array();
     $indice = 0;
+
     while ($row = $resSelect->fetch_assoc()) {
-        $alumnos[$indice]['boleta'] = $row['noBoleta'];
-        $alumnos[$indice]['curp'] = $row['curp'];
+        
+        $alumno['boleta'] = $row['noBoleta'];
+        $alumno['curp'] = $row['curp'];
         $nombre = $row['nombre'];
         $paterno = $row['apPaterno'];
         $materno = $row['apMaterno'];
         $nombre = "$nombre $paterno $materno";
-        $alumnos[$indice]['nombre'] = $nombre;
-        $alumnos[$indice]['fechaNac'] = $row['fechaNacimiento'];
-        $alumnos[$indice]['telefono'] = $row['telefono'];
-        $alumnos[$indice]['correoElect'] = $row['correoElect'];
+        $alumno['nombre'] = $nombre;
+        $alumno['fechaNac'] = $row['fechaNacimiento'];
+        $alumno['telefono'] = $row['telefono'];
+        $alumno['correoElect'] = $row['correoElect'];
 
         /* Ejecutando query para hora y grupo */
         $curp = $row['curp'];
         $sqlSelectExamen = "SELECT * FROM examen where curp='$curp'";
         $resExamen = mysqli_query($conexion, $sqlSelectExamen);
         while ($examen = $resExamen->fetch_assoc()) {
-            $alumnos[$indice]['grupo'] = $examen['grupo'];
-            $alumnos[$indice]['hora'] = $examen['hora'];
+            $alumno['grupo'] = $examen['grupo'];
+            $alumno['hora'] = $examen['hora'];
         }
-        $alumnos[$indice]['escProcedencia'] = $row['escProcedencia'];
-        $alumnos[$indice]['entFedProcedencia'] = $row['entFedProced'];
+        $alumno['escProcedencia'] = $row['escProcedencia'];
+        $alumno['entFedProcedencia'] = $row['entFedProced'];
+        array_push($alumnos, $alumno);
+        
         $indice++;
     }
-    echo json_encode($alumnos);
+       
+    $json = json_encode($alumnos, JSON_UNESCAPED_UNICODE);
+    print_r($json);
+    
 }

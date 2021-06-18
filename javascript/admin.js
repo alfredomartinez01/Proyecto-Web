@@ -1,4 +1,4 @@
-var mediaqueryList = window.matchMedia("(min-width: 800px)");
+﻿var mediaqueryList = window.matchMedia("(min-width: 800px)");
 /* Removemos style de la barra para evitar problemas */
 function manejador(EventoMediaQueryList) {
     if (EventoMediaQueryList.matches) {
@@ -225,7 +225,7 @@ function fillTable(tipo) {
     }
 
     /* Inserción en la tabla */
-    if (alumnos) {
+    if (alumnos.length > 0) {
         /* Muestra la tabla */
         var tabla = document.getElementById("tabla-alumnos");
         tabla.style.display = "block";
@@ -325,7 +325,7 @@ function setInformation() {
     var informacion = "tipo=boleta" + "&operacion=buscar" + "&boleta=" + boleta;
 
     xhr.send(informacion);
-    if (alumno) {
+    if (alumno.length>0) {
         /* Oculta mensaje de error */
         var error = document.getElementById("no-EncuentraActualiza");
         error.style.display = "none";
