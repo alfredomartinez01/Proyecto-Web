@@ -42,30 +42,47 @@ function confirmar_envio() {
     var promedio = document.confirmar.Promedio.value;
     var opcion = document.confirmar.Opcion.value;
 
-    if (confirm("Hola" + " " + nombre + " " + apaterno + " " + amaterno + " " +
-        "verifica que los datos que ingresaste sean correctos:" + "\n" +
-        "Nombre: " + nombre + "\n" +
-        "Apellido paterno: " + apaterno + "\n" +
-        "Apellido materno: " + amaterno + "\n" +
-        "Número de boleta: " + boleta + "\n" +
-        "Fecha de nacimiento:" + Fnac + "\n" +
-        "Género: " + genero + "\n" +
-        "CURP: " + curp + "\n" +
-        "contacto:\n " +
-        "Calle: " + calle + "\n" +
-        "Número: " + num + "\n" +
-        "Colonia: " + colonia + "\n" +
-        "Código postal: " + cp + "\n" +
-        "Télefono/celular: " + tel + "\n" +
-        "E-mail: " + email + "\n" +
-        "Prodecencia: " + Escuela + "\n" +
-        "Procedencia: " + otra + "\n" +
-        "Estado de la República: " + estado + "\n" +
-        "Promedio: " + promedio + "\n" +
-        "Opción: " + opcion + "\n")) {
+    res_confirm = confirm("Holaaaaa" + " " + nombre + " " + apaterno + " " + amaterno + " " +
+    "verifica que los datos que ingresaste sean correctos:" + "\n" +
+    "Nombre: " + nombre + "\n" +
+    "Apellido paterno: " + apaterno + "\n" +
+    "Apellido materno: " + amaterno + "\n" +
+    "Número de boleta: " + boleta + "\n" +
+    "Fecha de nacimiento:" + Fnac + "\n" +
+    "Género: " + genero + "\n" +
+    "CURP: " + curp + "\n" +
+    "contacto:\n " +
+    "Calle: " + calle + "\n" +
+    "Número: " + num + "\n" +
+    "Colonia: " + colonia + "\n" +
+    "Código postal: " + cp + "\n" +
+    "Télefono/celular: " + tel + "\n" +
+    "E-mail: " + email + "\n" +
+    "Prodecencia: " + Escuela + "\n" +
+    "Procedencia: " + otra + "\n" +
+    "Estado de la República: " + estado + "\n" +
+    "Promedio: " + promedio + "\n" +
+    "Opción: " + opcion + "\n");
+
+    if (res_confirm) {
         // document.confirmar.submit();
-        return true;
-    } else {
-        return false;
+        console.log("enviando...");
+        enviar_datos();
+        console.log("enviado");
     }
 }
+
+
+function enviar_datos(){
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === this.DONE) {
+            console.log(this.status) // do something; the request has completed
+        }
+    }
+    var data = document.getElementById("form_data"); //id de formulario
+    var formdata = new FormData(data);
+    ajax.open("POST", "./php/datos.php"); //direccion de a donde se va a enviar
+    ajax.send(formdata);
+}
+
