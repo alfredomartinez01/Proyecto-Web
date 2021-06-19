@@ -8,8 +8,8 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">    
     <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="css/estilo.css">
-    <script language="javascript" type="text/javascript" src="javascript/escuela.js">
-    </script>
+    <script language="javascript" type="text/javascript" src="javascript/escuela.js"></script>
+    <script language="javascript" type="text/javascript" src="javascript/validaciones.js"></script>
    
 
 </head>
@@ -40,7 +40,8 @@
                 <h4>(AGOSTO 2021)</h4>
 
             <div class="contenedor">
-                    <form  name="confirmar" action="php/datos.php" method="POST" enctype="multipart/form-data"  onsubmit="return confirmar_envio()">
+                    <!-- <form  name="confirmar" action="php/datos.php" method="POST" enctype="multipart/form-data"  onsubmit="return confirmar_envio()"> -->
+                        <form name="confirmar" id="form_data" onsubmit="return validacion()">    
                         <!--identidad-->
                       
                             <table>
@@ -240,8 +241,9 @@
                     
                         <br>
                         <!-- Envio y reseto de informacion -->
-                        <input id="boton" type="reset"/> 
-                        <button id="boton" type="submit">Enviar</button>
+                        <input class="boton" type="reset"/> 
+                        <input class="boton" type="submit" value="Enviar"/>
+                        <div id="menRev"></div> 
                         <!--<input type="submit" onclick="confirmar_envio()" name="Envio" value="Enviar"/><br>-->
                     
                     </form>
