@@ -28,7 +28,7 @@
     margin-right: 20px;
     height: 30px;
 }
-#formulario #boton{
+#formulario .boton{
     height: 40px;
     margin-top: 5px;
     width: 110px;
@@ -42,7 +42,7 @@
 
 }
 
-#formulario #boton:hover{
+#formulario .boton:hover{
     background-color:#7D0F3F;
 }
 
@@ -98,7 +98,10 @@ table input{
     display: none;
 }
 
-
+#menRev{
+    display: none; 
+    font-family: fantasy;
+} 
 
 /* media */
 
