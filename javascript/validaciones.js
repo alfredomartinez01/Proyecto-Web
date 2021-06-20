@@ -40,7 +40,7 @@ function validacion(){
             setMessage("Llena campo 'Nombre(s)'");
             return false;
         }
-        else if(!(/^[A-Z]{1}[a-z]+$|^[A-Z]{1}[a-z]+\s[A-Z]{1}[a-z]+$|^[a-z]+$|^[a-z]+\s[a-z]+$/.test(nombre))){
+        else if(!(/^([A-ZÁÉÍÓÚ\u00d1a-záéíóú\u00f1]+\s*){1,2}$/.test(nombre))){
             setMessage("Solo puedes introducir letras en el campo 'Nombre(s)'");
             return false;
         }
@@ -50,7 +50,7 @@ function validacion(){
             setMessage("Llena campo 'Apellido Paterno'");
             return false;
         }
-        else if(!(/^([A-Z]{1}([a-z]+\s*)*)+$|^([a-z]\s*)+$/.test(Apaterno))){
+        else if(!(/^([A-ZÁÉÍÓÚ\u00d1a-záéíóú\u00f1]+\s*)+$/.test(Apaterno))){
             setMessage("Solo puedes introducir letras en el campo 'Apellido Paterno'");
             return false;
         }
@@ -60,7 +60,7 @@ function validacion(){
             setMessage("Llena campo 'Apellido Materno'");
             return false;
         }
-        else if(!(/^([A-Z]{1}([a-z]+\s*)*)+$|^([a-z]\s*)+$/.test(Amaterno))){
+        else if(!(/^([A-ZÁÉÍÓÚ\u00d1a-záéíóú\u00f1]+\s*)+$/.test(Amaterno))){
             setMessage("Solo puedes introducir letras en el campo 'Apellido Materno'");
             return false;
         }
@@ -86,20 +86,10 @@ function validacion(){
             setMessage("Llena campo 'CURP'");
             return false;
         }
-        else if(!(curp == "")){
-            if(!(/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/.test(curp))){ 
-                setMessage("Introduce un CURP valido");
-                if(enviar_curp()){
-                    setMessage("Ya se ha registrado ese CURP");
-                    console.log("Hola, entre");
-                }
-                return false;
-            }
-        }
-        /*else if(!(/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/.test(curp))){
+        else if(!(/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/.test(curp))){ 
             setMessage("Introduce un CURP valido");
             return false;
-        }*/
+        }
 
         /*Validación de Contacto */
         // calle - lista
@@ -107,7 +97,7 @@ function validacion(){
             setMessage("Llena campo 'Calle'");
             return false;
         }
-        else if(!(/^([A-Za-z]+\s*)+$/.test(calle))){
+        else if(!(/^([A-ZÁÉÍÓÚ\u00d1a-záéíóú\u00f1]+\s*)+$/.test(calle))){
             setMessage("Solo puedes introducir letras en el campo 'Calle'");
             return false;
         }
@@ -127,7 +117,7 @@ function validacion(){
             setMessage("Llena campo 'Colonia'");
             return false;
         }
-        else if(!(/^([A-Za-z]+\s*)+$/.test(colonia))){
+        else if(!(/^([A-ZÁÉÍÓÚ\u00d1a-záéíóú\u00f1]+\s*)+$/.test(colonia))){
             setMessage("Solo puedes introducir letras en el campo 'Colonia'");
             return false;
         }
@@ -194,7 +184,7 @@ function validacion(){
     }
     //confirmar_envio();
     setTimeout(function(){confirmar_envio();}, 10);
-    return false;
+    return true;
 }
 
 
@@ -208,40 +198,4 @@ function ocultarDiv(){
     cajita = document.getElementById("menRev");
     cajita.textContent = "";
     cajita.style.display = 'none';
-}
-
-function comprobarCurp() {
-    // Conexion con AJAX
-    var curp = document.getElementById("CURP").value;
-
-    var ajax = new XMLHttpRequest();
-    ajax.open("POST", "./php/existenciaCurp.php");
-    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    ajax.onload = function () {
-      var response = this.responseText;
-      console.log(response);
-      if (response == "0") { // Credenciales correctas
-        setMessage("Ya se ha registrado ese CURP");
-      } else if (response == "-1") {
-        // Mostramos mensaje de contraseña incorrecta
-        console.log("Todo bien");
-      } else {
-        // Mostramos mensaje de usuario no encontrados
-        console.log("Algo ha sucedido");
-      }
-    }
-  }
-
-  function enviar_curp(){
-    var ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function() {
-        if (this.readyState === this.DONE) {
-            console.log(this.status) // do something; the request has completed
-        }
-    }
-    var data = document.getElementById("CURP"); //id de formulario
-    //var formdata = new FormData(data);
-    ajax.open("POST", "./php/existenciaCurp.php"); //direccion de a donde se va a enviar
-    ajax.send(data);
 }
