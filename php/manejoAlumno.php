@@ -1,7 +1,7 @@
 <?php
 $tipo = $_POST['tipo'];
 $operacion = $_POST['operacion'];
-$conexion = mysqli_connect('localhost', 'root', '', 'examen');
+$conexion = mysqli_connect("bvuj4kjgmdef9ppegqws-mysql.services.clever-cloud.com", "u1o9qhoy3vl8g1tw", "aUVtITeWGA2LD3lssFIU", "bvuj4kjgmdef9ppegqws");
 mysqli_set_charset($conexion,"utf8"); // AQUI AGREGUE UTF-8
 
 $resSelect;
