@@ -46,7 +46,6 @@ function menu(number) {
             // Mostrando el frame de registro
             var registro = document.getElementById("formulario");
             registro.style.display = "block";
-            document.getElementById("formulario_registro").src = "../formulario.html";
             break;
 
         case 2: // Contenido para buscar alumno
@@ -162,7 +161,8 @@ function selectorOperacion(tipo) {
 /* Agrega el contenido a la tabla después de hacer una búsqueda */
 function fillTable(tipo) {
     /* Elimina contenido de la tabla */
-    var filas = document.getElementsByTagName("td");
+    
+    var filas = document.getElementsByClassName("td-muestra");
     while (filas.length > 0) {
         for (var i = 0; i < filas.length; i++) {
             filas[i].parentNode.removeChild(filas[i]);
@@ -238,6 +238,7 @@ function fillTable(tipo) {
 
             for (let o = 0; o < alumnos.length; o++) {
                 var cell = document.createElement('td');
+                cell.setAttribute("class", "td-muestra");
                 switch (i) {
                     case 1:
                         if (alumnos[o].boleta)
@@ -338,14 +339,6 @@ function setInformation() {
 
             var boleta = document.getElementById('alumno-boleta');
             boleta.innerHTML = "Número de boleta: " + alumno[0].boleta;
-
-            var telefono = document.getElementById('alumno-telefono');
-            telefono.value = alumno[0].telefono;
-            telefono.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
-
-            var correo = document.getElementById('alumno-correo');
-            correo.value = alumno[0].correoElect;
-            correo.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
 
             // Desabilitando el botón
             var boton_eliminacion = document.getElementById('boton-eliminar-datos');

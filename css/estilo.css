@@ -63,15 +63,18 @@ nav a:hover{
 }
 
 
-#formulario{
+#formulario,
+#datos-alumno{
     margin-top: 200px;
 }
 
-#formulario h2{
+#formulario h2,
+#datos-alumno h2{
     color: #00669C;
    text-align: center;
 }
-#formulario h3, h4{
+#formulario h3, h4,
+#datos-alumno h3, h4{
     color: #B6B6B7;
     text-align: center;
 }
@@ -94,7 +97,7 @@ section{
 footer{
     position: absolute;
     background-color: #B6B6B7;
-    margin-top: 80px;
+    margin-top: 50px;
     width: 100%;
     height: auto;
     left: 0;
@@ -156,17 +159,17 @@ footer{
 
 @media(min-width:320px){
     header{
-        height: 80px;
+        height: 75px;
     }    
     nav{
         height: 40px;
-        margin-top: 85px;
+        margin-top: 78px;
     }    
     nav a{
         font-size: 17px;
     }    
     #banner{
-        margin-top: 120px;
+        margin-top: 108px;
     }
     h1{
         position: absolute;
@@ -175,7 +178,7 @@ footer{
         font-size: 25px;
         width: 78%;
         margin-top: 10px;
-        
+        line-height: 2;        
     }
     #titulo h2{
         font-size: 25px;
@@ -208,7 +211,7 @@ footer{
 
 @media(min-width:425px){
     .escom{
-        width: 55px;
+        width: 65px;
     }
     .ipn{
         width: 35px;        
@@ -222,6 +225,7 @@ footer{
         font-size: 35px;
         width: 78%;
         margin-top: 10px;
+        line-height: 40px;
     }
     #banner h2{
         font-size: 45px;
@@ -234,7 +238,7 @@ footer{
 @media(min-width:900px){
     h1{
         text-align: center;
-        font-size: 45px;
+        font-size: 38px;
         width: 78%;
         margin-top: 10px;
     }
@@ -258,28 +262,22 @@ footer{
     .redes img{
         width: 4%;
     }  
-    
-    footer{
-        margin-top: 85px;
-    }
-
-
-
+      
 }
 
 @media(min-width:1200px){
     header{
-        height: 100px;
+        height: 90px;
     }
     nav{
         height: 40px;
-        margin-top: 105px;
+        margin-top: 92px;
     }
     nav a{
         font-size: 20px;
     }
     #banner{
-        margin-top: 145px;
+        margin-top: 132px;
     }
     
     #titulo h2{
@@ -292,9 +290,9 @@ footer{
 
     h1{
         text-align: center;
-        font-size: 70px;
+        font-size: 47px;
         width: 80%;
-      
+        line-height: 70px;      
     }
 
     .escom{

@@ -1,10 +1,12 @@
 
 
-#formulario form{
+#formulario form,
+#datos-alumno form{
     font-size: 20px;
 }
 
-#formulario table{
+#formulario table,
+#datos-alumno table{
     width: 100%;
     background-color: #e5f5fd;
     border-radius: 1em;
@@ -14,21 +16,25 @@
     
 }
 
-#formulario tr{
+#formulario tr,
+#datos-alumno tr{
     height: 35px;
 }
 
 
-#formulario{
+#formulario,
+#datos-alumno{
     margin-top: 200px;
 }
 
 
-#formulario input{
+#formulario input,
+#datos-alumno input{
     margin-right: 20px;
     height: 30px;
 }
-#formulario .boton{
+#formulario .boton,
+#datos-alumno .boton{
     height: 40px;
     margin-top: 5px;
     width: 110px;
@@ -42,24 +48,33 @@
 
 }
 
-#formulario .boton:hover{
+#formulario .boton:hover,
+#datos-alumno .boton:hover{
     background-color:#7D0F3F;
 }
 
-#formulario h2{
+#formulario h2,
+#datos-alumno h2{
     color: #00669C;
    text-align: center;
 
 }
-#formulario h3, h4{
+#formulario h3, h4,
+#datos-alumno h3, h4{
     color: #B6B6B7;
     text-align: center;
    
 }
 
 #formulario caption{
-    color:#7D0F3F;
+    color:#7D0F3F !important;
     margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#datos-alumno caption{
+    color:#7D0F3F !important;
     margin-bottom: 10px;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -74,7 +89,8 @@ table input{
     margin-bottom: 15px;
 }
 
-#formulario select{
+#formulario select,
+#datos-alumno select{
     width: 80%;
     height: 30px;
     border: 0px;
@@ -85,16 +101,21 @@ table input{
     
 }
 
-#F{
+#F,
+#F-actualiza{
     width: 20px;
     
 }
 
-#M{
+#M,
+#M-actualiza{
     width: 20px;
 }
 
-#lesc, #iesc{
+#lesc, 
+#iesc,
+#Lesc-actualiza,
+#iesc-actualiza{
     display: none;
 }
 
@@ -109,6 +130,10 @@ table input{
     #formulario form{
         width: 65%;
         margin: auto;
+    }
+    #datos-alumno form{
+        width: 65% !important;
+        margin: auto !important;
     }
 
 }

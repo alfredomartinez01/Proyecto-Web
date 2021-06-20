@@ -42,13 +42,15 @@ nav label img {
 }
 
 /* Para registro de alumno */
-#formulario {
+#formulario,
+#datos-alumno{
   position: relative;
   width: 100%;
   margin-top: 10px;
-  height: 2000px;
+  height: auto !important;
 }
-#form_data{
+#form_data,
+#form_data_update{
   position: relative;
   height: auto!important;
 }
@@ -99,18 +101,28 @@ nav label img {
 #tipo_eliminacion option[selected] {
   font-weight: bold;
 }
-.datos_consulta label,
-.datos_actualizacion label {
+.datos_consulta label{
   display: block;
   margin: 0px auto;
   margin: 30px 0px 10px 0px;
 }
-.datos_consulta input,
-.datos_actualizacion input {
+.datos_consulta input{
   display: block;
   margin: 0px auto;
   margin-bottom: 20px;
 }
+/* Arreglando elementos en la parte de actualizacion */
+#actualizarPorboleta{
+  margin: 0px auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+#actualizarPorboleta + input{
+  margin: 0px auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 #tabla-alumnos {
   overflow-x: auto;
 }
