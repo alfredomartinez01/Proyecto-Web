@@ -168,7 +168,6 @@ function fillTable(tipo) {
             filas[i].parentNode.removeChild(filas[i]);
         }
     }
-
     /* Validacion de los datos */
 
     /* Peticiones dependiendo del campo */
@@ -309,51 +308,64 @@ function fillTable(tipo) {
 /* Muestra el contenido del usuario */
 function setInformation() {
     /* Validacion de los datos */
-
-    /* Realiza la peticion */
-    /* Peticiones dependiendo del campo */
-    var alumno = [];
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../php/manejoAlumno.php", false);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var boleta = document.getElementById("actualizarPorboleta").value;
 
-    xhr.onload = function () {
-        var response = this.responseText;
-        alumno = JSON.parse(response);
-    }
-    var informacion = "tipo=boleta" + "&operacion=buscar" + "&boleta=" + boleta;
+    if (validar("boleta", boleta)) {
+        /* Realiza la peticion */
+        /* Peticiones dependiendo del campo */
+        var alumno = [];
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../php/manejoAlumno.php", false);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhr.send(informacion);
-    if (alumno.length>0) {
-        /* Oculta mensaje de error */
-        var error = document.getElementById("no-EncuentraActualiza");
-        error.style.display = "none";
 
-        var datos = document.getElementById('datos-alumno');
-        datos.style.display = "block";
+        xhr.onload = function () {
+            var response = this.responseText;
+            alumno = JSON.parse(response);
+        }
+        var informacion = "tipo=boleta" + "&operacion=buscar" + "&boleta=" + boleta;
 
-        var boleta = document.getElementById('alumno-boleta');
-        boleta.innerHTML = "Número de boleta: " + alumno[0].boleta;
+        xhr.send(informacion);
+        if (alumno.length > 0) {
+            /* Oculta mensaje de error */
+            var error = document.getElementById("no-EncuentraActualiza");
+            error.style.display = "none";
+            var error = document.getElementById("actualizacion-invalida");
+            error.style.display = "none";
 
-        var telefono = document.getElementById('alumno-telefono');
-        telefono.value = alumno[0].telefono;
-        telefono.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
+            var datos = document.getElementById('datos-alumno');
+            datos.style.display = "block";
 
-        var correo = document.getElementById('alumno-correo');
-        correo.value = alumno[0].correoElect;
-        correo.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
+            var boleta = document.getElementById('alumno-boleta');
+            boleta.innerHTML = "Número de boleta: " + alumno[0].boleta;
 
-        // Desabilitando el botón
-        var boton_eliminacion = document.getElementById('boton-eliminar-datos');
-        boton_eliminacion.style.display = "none";
+            var telefono = document.getElementById('alumno-telefono');
+            telefono.value = alumno[0].telefono;
+            telefono.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
+
+            var correo = document.getElementById('alumno-correo');
+            correo.value = alumno[0].correoElect;
+            correo.setAttribute("onchange", `muestraActualizar(${alumno[0].boleta})`);
+
+            // Desabilitando el botón
+            var boton_eliminacion = document.getElementById('boton-eliminar-datos');
+            boton_eliminacion.style.display = "none";
+        } else {
+            /* Muestra mensaje de error y datos */
+            var error = document.getElementById("no-EncuentraActualiza");
+            error.style.display = "block";
+            var datos = document.getElementById('datos-alumno');
+            datos.style.display = "none";
+        }
     } else {
         /* Muestra mensaje de error y datos */
-        var error = document.getElementById("no-EncuentraActualiza");
+        var error = document.getElementById("actualizacion-invalida");
         error.style.display = "block";
         var datos = document.getElementById('datos-alumno');
         datos.style.display = "none";
     }
+
+
 
 }
 
@@ -500,5 +512,23 @@ function limpiarPaginas() {
     var errors = document.getElementsByClassName("notFound");
     for (var i = 0; i < errors.length; i++) {
         errors[i].style.display = "none";
+    }
+}
+function validar(tipo, dato) {
+    switch (tipo) {
+        case "boleta":
+            if (!(/^(P(P|E)|[0-9]{2})[0-9]{8}$/.test(dato))) {
+                return false;
+            } else {
+                return true;
+            }
+        case "curp":
+            if (!(/^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/.test(curp))) {
+                return false;
+            } else {
+                return true;
+            }
+        case "grupo":
+            return true;
     }
 }

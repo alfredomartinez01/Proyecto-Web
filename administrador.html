@@ -5,9 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
   <title>Inicio de sesión - Administrador</title>
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 
+  <link rel="stylesheet" href="css/formulario.css">
   <link rel="stylesheet" href="css/estilo.css" />
   <link rel="stylesheet" href="css/administrador.css" />
   <link rel="stylesheet" href="css/estilosSecciones.css">
@@ -64,12 +67,12 @@
       <h4>(AGOSTO 2021)</h4>
 
       <div id="content" class="contenedor">
-
+        
         <!-- 
             Sección de registro 
         -->
         <div id="formulario" style="display: none;">
-          <iframe src="../formulario.html" id="formulario_registro" scrolling="no"></iframe>
+          <script src="javascript/formulario.js"></script>
         </div>
 
         <!-- 
@@ -175,6 +178,8 @@
           <input type="submit" class="button" value="Buscar" onclick="selectorOperacion('boleta')">
         </div>
         <p id="no-EncuentraActualiza" style="display: none;" class="notFound">Sin coincidencias.</p>
+        <p id="actualizacion-invalida" style="display: none;" class="notFound">Ingrese correctamente la boleta.</p>
+        
         <!-- Impresion de los datos de alumno -->
         <div id="datos-alumno" class="datos_actualizacion" style="display: none;">
           <p class="labels" id="alumno-boleta"></p>

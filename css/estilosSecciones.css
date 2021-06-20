@@ -46,15 +46,11 @@ nav label img {
   position: relative;
   width: 100%;
   margin-top: 10px;
-  overflow-y: hidden;
-  height: 1850px;
+  height: 2000px;
 }
-#formulario_registro {
-  position: absolute;
-  top: -320px;
-  border: none;
-  height: 2150px;
-  width: 100%;
+#form_data{
+  position: relative;
+  height: auto!important;
 }
 
 /* Para búsqueda de alumno */
