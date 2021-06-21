@@ -19,7 +19,9 @@
 body{
     font-family: 'Spartan', sans-serif;
 }
-
+h1{
+    padding: 1px !important; 
+}
 header{
     font-family: 'Merriweather Sans', sans-serif;
     width: 100%;
@@ -177,8 +179,8 @@ footer{
         text-align: center;
         font-size: 25px;
         width: 78%;
-        margin-top: 10px;
-        line-height: 2;        
+        margin-top: 5px;
+        padding: 1px;       
     }
     #titulo h2{
         font-size: 25px;
@@ -216,6 +218,15 @@ footer{
     .ipn{
         width: 35px;        
     } 
+    h1{
+        position: absolute;
+        font-family: Mukta;
+        text-align: center;
+        font-size: 25px;
+        width: 78%;
+        margin-top: 28px;
+        line-height: 5px;       
+    }
 
 }
 
