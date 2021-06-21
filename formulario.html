@@ -41,11 +41,11 @@
             <h4>(AGOSTO 2021)</h4>
             <div class="contenedor">
                 <!-- <form  name="confirmar" action="php/datos.php" method="POST" enctype="multipart/form-data"  onsubmit="return confirmar_envio()"> -->
-                <form method="POST" name="confirmar" id="form_data" onchange="ocultarDiv()">
+                <form method="POST" name="confirmar" id="form_data" action="php/datos.php" onchange="ocultarDiv(0)">
                     <!--identidad-->
 
                     <table>
-                        <caption>Identidad:</caption>
+                        <caption>Identidad</caption>
                         <tr>
                             <td><label for="nDeboleta"> No. de boleta: </label></td>
                         </tr>
@@ -82,7 +82,7 @@
                             <td><input type="date" id="Fnacimiento" name="Fnacimiento" /></td>
                         </tr>
                         <tr>
-                            <td><label> Genero: </label></td>
+                            <td><label> Genero</label></td>
                         </tr>
                         <tr>
                             <td><input type="radio" name="gen" id="M" value="M" />Masculino</td>
@@ -104,7 +104,7 @@
 
 
                     <table>
-                        <caption>Contacto:</caption>
+                        <caption>Contacto</caption>
                         <tr>
                             <td><label for="calle">Calle:</label> </td>
                         </tr>
@@ -148,7 +148,7 @@
 
 
                     <table>
-                        <caption>Procedencia:</caption>
+                        <caption>Procedencia</caption>
                         <tr>
                             <td><label for="EscuelaProcedencia">Escuela de procedencia:</label></td>
                         </tr>
@@ -223,7 +223,7 @@
                         </tr>
 
                         <tr>
-                            <td><label for="Promedio">Promedio: </label></td>
+                            <td><label for="Promedio">Promedio:</label></td>
                         </tr>
                         <tr>
                             <td><input type="number" step="any" id="Promedio" name="Promedio" /></td>
@@ -244,16 +244,12 @@
 
                     <br>
                     <!-- Envio y reseto de informacion -->
-                    <input class="boton" type="reset" />
-                    <input class="boton" type="submit" value="Enviar" />
+                    <input type="text" value="alumno" id="origen" name="origen" style="display: none;">
                     <div id="menRev" class="error"></div>
+                    <input class="boton" type="reset" />
+                    <input class="boton" type="submit" value="Enviar" onclick="return insertarAlumno(0)" />
 
-                    <script> // Asignamos el evento al formulario
-                        var form = document.getElementById("form_data");
-                        form.onsubmit = e => {
-                            insertarAlumno();
-                        }
-                    </script>
+                    
                     <!--<input type="submit" onclick="confirmar_envio()" name="Envio" value="Enviar"/><br>-->
 
                 </form>

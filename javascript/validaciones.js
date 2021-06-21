@@ -1,4 +1,4 @@
-function insertarAlumno() {
+function insertarAlumno(opcion) {
     /*Obtención de los elementos */
     var error = false; // Si encuentra algún error se vuelve verdadera
     //ocultarDiv();
@@ -137,7 +137,7 @@ function insertarAlumno() {
         error = true;
     }
     else if (!(/^[0-9]{10}$/.test(tel))) {
-        setMessage("El campo 'Código Postal' debe componerse de 10 digitos");
+        setMessage("El campo 'Teléfono' debe componerse de 10 digitos");
         error = true;
     }
 
@@ -181,7 +181,7 @@ function insertarAlumno() {
         error = true;
     }
 
-    /*
+    
     if (!error) { // No encontró ningún error
         //Mostramos la información
         if (confirmar_envio()) { 
@@ -194,21 +194,27 @@ function insertarAlumno() {
                console.log(response);           
             }
             var data = document.getElementById("form_data"); //id de formulario
-            var formdata = new FormData(data);   
-            console.log(formdata.get("nDeboleta"));    
-            ajax.send(formdata);
+            var formdata = new FormData(data); 
 
-        } 
-    }*/
+            ajax.send(formdata);
+            return true;
+        } else{
+            return false;
+        }
+    } else{
+        return false;
+    }
 }
 
 function setMessage(mensaje) {
     cajita = document.getElementById("menRev");
-    cajita.style.display = 'inline';
+    cajita.style.display = 'block';
     cajita.textContent = mensaje;
 }
-function ocultarDiv() {
-    cajita = document.getElementById("menRev");
-    cajita.textContent = "";
-    cajita.style.display = 'none';
+function ocultarDiv(opcion) {
+    if(opcion == 0){
+        cajita = document.getElementById("menRev");
+        cajita.textContent = "";
+        cajita.style.display = 'none';
+    }
 }

@@ -129,6 +129,8 @@ table input{
     display: none;    
     font-family: 'Spartan', sans-serif;
     font-size: 16px;
+    text-align: left !important;
+    margin-bottom: 15px;
 } 
 
 /* media */

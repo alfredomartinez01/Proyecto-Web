@@ -1,70 +1,82 @@
 <!DOCTYPE html public "-//w3c">
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">    
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/consulta.css">
     <link rel="stylesheet" href="css/estilo.css">
     <script language="javascript" type="text/javascript" src="javascript/escuela.js">
     </script>
-   
+    <style>
+        footer {
+            margin: 0px;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
 
 </head>
 
 <body>
     <header>
         <div class="contenedor">
-        <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
-        <h1> Escuela Superior de C&oacute;mputo </h1>
-        <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
-        
-            <nav> 
-            
+            <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
+            <h1> Escuela Superior de C&oacute;mputo </h1>
+            <a href="https://www.ipn.mx/"><img class="ipn" src="img/logo_ipn.png"></a>
+
+            <nav>
+
                 <a href="index.html" target="_parent">Inicio</a>
-      
+
             </nav>
-        
-        
+
+
         </div>
     </header>
 
-   
+
     <main>
-      
+
         <section id="consulta">
             <h2>CONSULTA TU REGISTRO</h2>
-                <h3>ALUMNOS DE NUEVO INGRESO</h3>
-                <h4>(AGOSTO 2021)</h4>
+            <h3>ALUMNOS DE NUEVO INGRESO</h3>
+            <h4>(AGOSTO 2021)</h4>
 
             <div class="contenedor">
-                    <form  name="confirmar"  target="_blank" action="php/consultaReg.php" method="POST" enctype="multipart/form-data"  onsubmit="return confirmar_envio()">
-                       
-                            <table>
-                                <caption><p>Consulta</p></caption>
-                                <tr>
-                                    <td><label for="CURP"> CURP: </label></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" id="CURP" name="CURP"  title="escribe CURP"/></td>
-                                </tr>
-                                <tr><td> Por favor, ingresa tu CURP</td></tr>
+                <form name="confirmar" target="_blank" action="php/consultaReg.php" method="POST"
+                    enctype="multipart/form-data" onsubmit="return confirmar_envio()">
 
-                            </table>
-                    
-                        <input id="boton" type="reset"/> 
-                        <button id="boton" type="submit">Enviar</button>
-                        <!--<input type="submit" onclick="confirmar_envio()" name="Envio" value="Enviar"/><br>-->
-                    
-                    </form>
+                    <table>
+                        <caption>
+                            <p>Consulta</p>
+                        </caption>
+                        <tr>
+                            <td><label for="CURP"> CURP: </label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="CURP" name="CURP" title="escribe CURP" /></td>
+                        </tr>
+                        <tr>
+                            <td> Por favor, ingresa tu CURP</td>
+                        </tr>
+
+                    </table>
+
+                    <input id="boton" type="reset" />
+                    <button id="boton" type="submit">Enviar</button>
+                    <!--<input type="submit" onclick="confirmar_envio()" name="Envio" value="Enviar"/><br>-->
+
+                </form>
 
 
 
-                    
-                
-                    
+
+
+
             </div>
         </section>
     </main>
@@ -72,12 +84,15 @@
     <footer>
         <div class="contenedor">
             <div class="redes">
-                <a class="icon-face" target="_blank" href="https://www.facebook.com/escomipnmx/"><img src="img/fb.png"  alt="link facebook"></a>
-                <a class="icon-twitter" target="_blank" href="https://twitter.com/escomunidad"><img src="img/twitt.png" alt="link twitter"></a>
+                <a class="icon-face" target="_blank" href="https://www.facebook.com/escomipnmx/"><img src="img/fb.png"
+                        alt="link facebook"></a>
+                <a class="icon-twitter" target="_blank" href="https://twitter.com/escomunidad"><img src="img/twitt.png"
+                        alt="link twitter"></a>
             </div>
         </div>
     </footer>
 
 
 </body>
+
 </html>
