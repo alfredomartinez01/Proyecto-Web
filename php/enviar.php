@@ -19,6 +19,9 @@ $otra=$_SESSION["proce2"];
 $estado=$_SESSION["estado"];
 $promedio=$_SESSION["prom"];
 $opcion=$_SESSION["opc"]; 
+$grupo=$_SESSION["grupo"];
+$hora=$_SESSION["hora"]; 
+$salon=$_SESSION["salon"];
 
 class PDF extends tFPDF
 {
@@ -76,6 +79,10 @@ class PDF extends tFPDF
     $pdf->Cell(0,10,'Estado de la República: ' .$estado,0,1);
     $pdf->Cell(0,8,'Promedio: '.$promedio,0,1);
     $pdf->Cell(0,10,'Número de opción: ' .$opcion,0,1);
+    $pdf->SetX(97);
+    $pdf->Cell(0,10,'Examen',0,1);
+    $pdf->Cell(0,10,'Grupo: ' .$grupo,0,1);
+    $pdf->Cell(0,10,'Salón: LAB'.$salon.'               Hora: '.$hora.' Horas',0,1);
     $doc=$pdf->Output('', 'S');
 
     
@@ -102,7 +109,7 @@ try {
     $mail -> Port = 587;                              // Puerto TCP para conectarse, use 465 para `PHPMailer :: ENCRYPTION_SMTPS` arriba
 
     // Destinatarios 
-    $mail -> setFrom ( 'registro.escom.webmx@gmail.com' , 'Adminnistración de ESCOM' );
+    $mail -> setFrom ( 'registro.escom.webmx@gmail.com' , 'Admin de ESCOM' );
     $mail -> addAddress ($email);     // Agrega un destinatario 
 
     // Archivos adjuntos 

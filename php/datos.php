@@ -45,6 +45,71 @@
         window.location.href="../formulario.html";
         </script>';
 	  }
+
+      //insertar Alumno en grupo 
+      for($i=1;$i<=20;$i++){ //el rango son el numero de grupos
+        if($i>=1 && $i<=12){
+            $gpo="1CM".$i;
+        }else{
+            $gpo="1CV".$i;
+        };
+        $sql = "SELECT * FROM examen WHERE grupo ='$gpo'";
+        $resultado=mysqli_query($conn, $sql);
+        $numFilas=mysqli_num_rows($resultado);
+       // echo "Tenemos $numFilas en grupo $i  ";
+        
+        if($numFilas<26){
+            if($i>=1 && $i<=6){
+                $hora="08:00";
+            }else if($i>=7 && $i<=12){
+                $hora="10:00";
+            }else if($i>=13 && $i<=18){
+                $hora="12:00";
+            }else if($i>=19 && $i<=24){
+                $hora="14:00";
+            };
+            $insertSql = "INSERT INTO examen (grupo, hora, curp) VALUES ('$gpo', '$hora', '$CURP' )";
+            if (mysqli_query($conn, $insertSql)) {
+                echo "New record created successfully";
+              } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+              }
+            break;
+        } 
+        }
+          
+        //consultamos tabla Examen
+        $sql = "SELECT * FROM examen WHERE curp ='$CURP'";
+        $result = mysqli_query($conn, $sql);
+        
+        if (mysqli_num_rows($result) > 0) {
+          // output data of each row
+          while($row = mysqli_fetch_assoc($result)) {
+        $id=$row["examenID"];
+        $grupo=$row["grupo"];
+        $hora1=$row["hora"];
+        $CurpExam=$row["curp"];
+          }
+
+        }
+        //Consultamos tabla grupo
+        $sql = "SELECT * FROM grupo WHERE grupo ='$grupo'";
+        $result = mysqli_query($conn, $sql);
+        
+        if (mysqli_num_rows($result) > 0) {
+          // output data of each row
+          while($row = mysqli_fetch_assoc($result)) {
+        $grupo2=$row["grupo"];
+        $salon=$row["salon"];
+          }
+
+        }
+
+
+
+
+
+
 	 mysqli_close($conn);
 //iniciamos session
       session_start();
@@ -65,7 +130,10 @@
     $_SESSION["proce2"]=$otra;
     $_SESSION["estado"]=$estado;
     $_SESSION["prom"]=$promedio;
-    $_SESSION["opc"]=$opcion; 
+    $_SESSION["opc"]=$opcion;
+    $_SESSION["grupo"]=$grupo;
+    $_SESSION["hora"]=$hora; 
+    $_SESSION["salon"]=$salon;
         
     echo'<head>
         <meta charset="UTF-8">
