@@ -206,5 +206,6 @@ function setformulario() {
         '</form>';
 
     document.write(form);
+    
 }
 setformulario();

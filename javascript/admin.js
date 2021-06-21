@@ -161,7 +161,7 @@ function selectorOperacion(tipo) {
 /* Agrega el contenido a la tabla después de hacer una búsqueda */
 function fillTable(tipo) {
     /* Elimina contenido de la tabla */
-    
+
     var filas = document.getElementsByClassName("td-muestra");
     while (filas.length > 0) {
         for (var i = 0; i < filas.length; i++) {
@@ -327,6 +327,7 @@ function setInformation() {
         var informacion = "tipo=boleta" + "&operacion=buscar" + "&boleta=" + boleta;
 
         xhr.send(informacion);
+
         if (alumno.length > 0) {
             /* Oculta mensaje de error */
             var error = document.getElementById("no-EncuentraActualiza");
@@ -339,6 +340,11 @@ function setInformation() {
 
             var boleta = document.getElementById('alumno-boleta');
             boleta.innerHTML = "Número de boleta: " + alumno[0].boleta;
+
+            // Aquí carga todos los datos del 
+            // Ajax por medio de la boleta haces la consulta
+            console.log(document.getElementById("actualizarPorboleta").value);
+            // Obtiene los inputs con el id, se hace la consulta y se les asigna el valor
 
             // Desabilitando el botón
             var boton_eliminacion = document.getElementById('boton-eliminar-datos');

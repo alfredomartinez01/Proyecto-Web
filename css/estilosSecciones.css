@@ -1,3 +1,10 @@
+#navegacion{
+  border-radius: 10px;
+  box-shadow: none;
+}
+nav > ul li:last-child{
+  border-bottom: none;
+}
 nav input[type='checkbox'] {
   display: none;
   float: none;
