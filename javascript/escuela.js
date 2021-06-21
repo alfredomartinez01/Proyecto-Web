@@ -11,17 +11,6 @@ function mostrar(id) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 function confirmar_envio() {
     var boleta = document.confirmar.nDeboleta.value;
     var nombre = document.confirmar.nombre.value;
@@ -65,24 +54,8 @@ function confirmar_envio() {
     "Opción: " + opcion + "\n");
 
     if (res_confirm) {
-        // document.confirmar.submit();
-        console.log("enviando...");
-        enviar_datos();
-        console.log("enviado");
+        return true;
+    } else{
+        return false;
     }
 }
-
-
-function enviar_datos(){
-    var ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function() {
-        if (this.readyState === this.DONE) {
-            console.log(this.status) // do something; the request has completed
-        }
-    }
-    var data = document.getElementById("form_data"); //id de formulario
-    var formdata = new FormData(data);
-    ajax.open("POST", "./php/datos.php"); //direccion de a donde se va a enviar
-    ajax.send(formdata);
-}
-

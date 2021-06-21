@@ -87,9 +87,9 @@ class PDF extends tFPDF
 
     
     //referencia a la clase phpmailer
-    use  PHPMailer \ PHPMailer \ PHPMailer ;
-    use  PHPMailer \ PHPMailer \SMTP;
-    use  PHPMailer \ PHPMailer \ Exception ;
+    use  PHPMailer\PHPMailer\PHPMailer;
+    use  PHPMailer\PHPMailer\SMTP;
+    use  PHPMailer\PHPMailer\Exception;
     
     require  'enviar/Exception.php' ;
     require  'enviar/PHPMailer.php' ;
@@ -183,7 +183,12 @@ try {
         #envia{
             margin-top:700px;
         }
-
+        
+        footer{
+            margin: 0px;
+            position: fixed;
+            bottom: 0;
+        }  
         </style>
 
 
@@ -197,7 +202,7 @@ try {
                 <img class="ipn" src="../img/logo_ipn.png">
             
                 <nav> 
-                    <a href="../main.html" target="">Inicio</a>
+                    <a href="../index.html" target="">Inicio</a>
                 </nav>
         
             </div>

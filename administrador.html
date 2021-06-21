@@ -1,4 +1,4 @@
-<!DOCTYPE html public "-//w3c">
+<!DOCTYPE html public "-//w3c" >
 <html lang="en">
 
 <head>
@@ -16,25 +16,12 @@
 
   <script src="javascript/admin.js"></script>
   <script>
-    function comprobarSesionyTamano() {
+    var primera = 0;
+    function comprobarSesion() {
       if (sessionStorage.getItem('usuario') == undefined) {
         location.href = "./administrador-login.html";
       }
-      // Calculamos tamaños de los elementos que no son la seccion principal y se los restamos al tamaño 
-      // de la página establecido por el dispositivo
-      var espacio = 0;
-      elemento = document.getElementsByTagName("section");
-      espacio += parseInt(window.getComputedStyle(elemento[0]).marginTop, 10);
-      espacio += parseInt(window.getComputedStyle(elemento[0]).marginBottom, 10);
-      console.log(espacio);
-
-      elemento = document.getElementsByTagName("footer");
-      espacio += parseInt(window.getComputedStyle(elemento[0]).height, 10);
-      espacio += parseInt(window.getComputedStyle(elemento[0]).marginTop, 10);
-      espacio += parseInt(window.getComputedStyle(elemento[0]).marginBottom, 10);      
-      
-      var content = document.getElementsByClassName("administrador");
-      content[0].setAttribute("style", `min-height: ${window.innerHeight - espacio}px`);
+    
     }
 
   </script>
@@ -91,8 +78,8 @@
   </style>
 </head>
 
-<body onload="comprobarSesionyTamano()">
-  <header>
+<body onload="comprobarSesion()">
+  <header >
     <div class="contenedor">
       <a href="https://www.escom.ipn.mx/"><img class="escom" src="img/logo_escom.png"></a>
       <h1> Escuela Superior de C&oacute;mputo </h1>
@@ -101,7 +88,7 @@
 
       <!-- Menu de navegación -->
       <nav>
-        <a href="main.html" target="_parent">Inicio</a>
+        <a href="index.html" target="_parent">Inicio</a>
 
         <label id="label-menu" for="menu"><img id="imagen-menu" src="img/menu.png" alt="menu"></label>
         <input type="checkbox" onchange="hamburguesa()" name="menu" id="menu">

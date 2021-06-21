@@ -1,7 +1,8 @@
 
 
 #formulario form,
-#datos-alumno form{
+#datos-alumno form,
+#formulario section{
     font-size: 20px;
 }
 
@@ -88,7 +89,12 @@ table input{
     height: 30px;
     margin-bottom: 15px;
 }
-
+.error {
+    margin-top: 10px;
+    color: red;
+    font-weight: 1000;
+    text-align: center;
+}
 #formulario select,
 #datos-alumno select{
     width: 80%;
@@ -120,14 +126,16 @@ table input{
 }
 
 #menRev{
-    display: none; 
-    font-family: fantasy;
+    display: none;    
+    font-family: 'Spartan', sans-serif;
+    font-size: 16px;
 } 
 
 /* media */
 
 @media(min-width:1000px){
-    #formulario form{
+    #formulario form,
+    #formulario section{
         width: 65%;
         margin: auto;
     }
