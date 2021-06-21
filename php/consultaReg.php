@@ -18,6 +18,36 @@
     /*echo "Connected successfully";*/
 
 //hacemos consulta en BD
+
+//consultamos tabla Examen
+$sql = "SELECT * FROM examen WHERE curp ='$CURP'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result)) {
+$id=$row["examenID"];
+$grupo=$row["grupo"];
+$hora=substr($row["hora"], 0,5);
+$CurpExam=$row["curp"];
+  }
+
+}
+//Consultamos tabla grupo
+$sql = "SELECT * FROM grupo WHERE grupo ='$grupo'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result)) {
+$grupo2=$row["grupo"];
+$salon=$row["salon"];
+  }
+
+}
+
+
+//Consultamos tabla alumno
 $sql = "SELECT * FROM alumno where curp='$CURP'";
 $result = mysqli_query($conn, $sql);
 
@@ -107,6 +137,10 @@ $email=$row["correoElect"];
          $pdf->Cell(0,10,'Estado de la República: ' .$estado,0,1);
          $pdf->Cell(0,8,'Promedio: '.$promedio,0,1);
          $pdf->Cell(0,10,'Número de opción: ' .$opcion,0,1);
+         $pdf->SetX(97);
+         $pdf->Cell(0,10,'Examen',0,1);
+         $pdf->Cell(0,10,'Grupo: ' .$grupo,0,1);
+         $pdf->Cell(0,10,'Salón: LAB'.$salon.'               Hora: '.$hora.' Horas',0,1);
          $pdf->Output('I', 'registro.pdf');
      
 
