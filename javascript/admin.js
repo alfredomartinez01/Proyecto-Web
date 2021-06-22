@@ -366,9 +366,20 @@ function setInformation() {
                 document.getElementById('F').checked = true;
             }
             document.getElementById('CURP').value = alumno.curp;
-            document.getElementById('calle').value = alumno.calleYNumc;
-            document.getElementById('numero').value = alumno.calleYNumc;
-            document.getElementById('colonia').value = alumno.colonia;
+            var calleNum = (alumno.calleYNum).split(" ");
+            // Separamos calle y número
+            var calle = "";
+            for(let i =0; i<calleNum.length; i++){
+                if(i != calleNum.length-1){
+                    calle += calleNum[i];
+                }
+            }
+
+            document.getElementById('calle').value = calle;
+            document.getElementById('numero').value = calleNum[calleNum.length -1];
+
+
+             document.getElementById('colonia').value = alumno.colonia;
             document.getElementById('codigo').value = alumno.codigoPostal;
             document.getElementById('tel').value = alumno.telefono;
             document.getElementById('correo').value = alumno.correoElect;
