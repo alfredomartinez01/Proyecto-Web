@@ -7,7 +7,7 @@ function validarCredenciales()
     $password = $_POST["contrasena"];
     $respuesta = 0;
     // Conectamos a la base de datos
-    $conexion = mysqli_connect("bvuj4kjgmdef9ppegqws-mysql.services.clever-cloud.com", "u1o9qhoy3vl8g1tw", "aUVtITeWGA2LD3lssFIU", "bvuj4kjgmdef9ppegqws");
+    $conexion = mysqli_connect('localhost', 'root', '', 'examen');
 
     // Hacemos el query y comprobamos
     $sqlSelect = "SELECT password FROM admin where usuario='$usuario'";
