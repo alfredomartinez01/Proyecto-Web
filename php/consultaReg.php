@@ -4,12 +4,12 @@
 	$CURP =$_POST["CURP"];
   	
 //iniciamos la conexion a la BD
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db="examen";
+    $servername = "bvuj4kjgmdef9ppegqws-mysql.services.clever-cloud.com";
+    $username = "u1o9qhoy3vl8g1tw";
+    $password = "aUVtITeWGA2LD3lssFIU";
+    $db="bvuj4kjgmdef9ppegqws";
     // Create connection
-    $conn = mysqli_connect("localhost", "root", "", "examen");
+    $conn = mysqli_connect($servername, $username, $password, $db);
     $conn->set_charset("utf8");
     // Check connection
    if (!$conn) {
