@@ -28,10 +28,10 @@ $origen = $_POST["origen"];
 $callenum = $calle . ' ' . $numero;
 
 //iniciamos la conexion a la BD
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$db = 'examen';
+   $servername = "bvuj4kjgmdef9ppegqws-mysql.services.clever-cloud.com";
+    $username = "u1o9qhoy3vl8g1tw";
+    $password = "aUVtITeWGA2LD3lssFIU";
+    $db="bvuj4kjgmdef9ppegqws";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $db);
@@ -211,8 +211,8 @@ if (!$conn) {
                             <div class="contenedor">
                             <div id="mensaje">
                             <p>Tus datos se gurdaron correctamente</p>
-                            <a href="pdf.php" target="_blank"> Generar pdf</a>
-                            <a href="enviar.php" target="_blank"> Enviar por correo </a>
+                            <a href="./pdf.php" target="_blank"> Generar pdf</a>
+                            <a href="./enviar.php" target="_blank"> Enviar por correo </a>
                             </div>
 
                             </div>
