@@ -339,5 +339,9 @@ if (!$conn) {
             }
         }
     } else {
+        echo'<script type="text/javascript">
+        alert("Hubo un error al guardar tus datos, posiblemente el registro ya existe, intente de nuevo");
+        window.history.back(-1);
+        </script>';
     }
 }

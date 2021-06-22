@@ -1,57 +1,58 @@
-function setformulario() {
-    var form = '<form name="confirmar" id="form_data_update" onsubmit="return validacion()">' +
+function getFormularioActualiza() {
+    var form = '<form method="POST" name="confirmar" id="form_data_update" action="php/datos.php" onchange="ocultarDiv(0)">' +
         '<!--identidad-->' +
+        '' +
         '<table>' +
-        '<caption>Identidad:</caption>' +
+        '<caption>Identidad</caption>' +
         '<tr>' +
-        '<td><label for="nDeboleta-actualiza"> No. de boleta: </label></td>' +
+        '<td><label for="nDeboleta"> No. de boleta: </label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="nDeboleta-actualiza" name="nDeboleta-actualiza" title="escribe boleta" /></td>' +
-        '</tr>' +
-        '' +
-        '<tr>' +
-        '<td><label for="nombre-actualiza"> Nombre(s): </label></td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><input type="text" id="nombre-actualiza" name="nombre" title="escribe nombre" /></td>' +
+        '<td><input type="text" id="nDeboleta" name="nDeboleta" title="escribe boleta" /></td>' +
         '</tr>' +
         '' +
-        '' +
         '<tr>' +
-        '<td><label for="Apaterno-actualiza"> Apellido paterno: </label></td>' +
+        '<td><label for="nombre"> Nombre(s): </label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="Apaterno-actualiza" name="Apaterno-actualiza" title="escribe apellido paterno" />' +
+        '<td><input type="text" id="nombre" name="nombre" title="escribe nombre" /></td>' +
+        '</tr>' +
+        '' +
+        '' +
+        '<tr>' +
+        '<td><label for="Apaterno"> Apellido paterno: </label></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><input type="text" id="Apaterno" name="Apaterno" title="escribe apellido paterno" />' +
         '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="Amaterno-actualiza"> Apellido Materno: </label></td>' +
+        '<td><label for="Amaterno"> Apellido Materno: </label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="Amaterno-actualiza" name="Amaterno-actualiza" title="escribe apellido materno" />' +
+        '<td><input type="text" id="Amaterno" name="Amaterno" title="escribe apellido materno" />' +
         '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="Fnacimiento-actualiza"> Fecha de nacimiento: </label></td>' +
+        '<td><label for="Fnacimiento"> Fecha de nacimiento: </label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="date" id="Fnacimiento-actualiza" name="Fnacimiento-actualiza" /></td>' +
+        '<td><input type="date" id="Fnacimiento" name="Fnacimiento" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label> Genero: </label></td>' +
+        '<td><label> Genero</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="radio" name="gen-actualiza" id="M-actualiza" value="M" />Masculino</td>' +
+        '<td><input type="radio" name="gen" id="M" value="M" />Masculino</td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="radio" name="gen-actualiza" id="F-actualiza" value="F" /> Femenino</td>' +
+        '<td><input type="radio" name="gen" id="F" value="F" /> Femenino</td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="CURP-actualiza"> CURP: </label></td>' +
+        '<td><label for="CURP"> CURP: </label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="CURP-actualiza" name="CURP-actualiza" title="escribe CURP" /></td>' +
+        '<td><input type="text" id="CURP" name="CURP" title="escribe CURP" /></td>' +
         '</tr>' +
         '</table>' +
         '' +
@@ -61,42 +62,42 @@ function setformulario() {
         '' +
         '' +
         '<table>' +
-        '<caption>Contacto:</caption>' +
+        '<caption>Contacto</caption>' +
         '<tr>' +
-        '<td><label for="calle-actualiza">Calle:</label> </td>' +
+        '<td><label for="calle">Calle:</label> </td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="calle-actualiza" name="calle-actualiza" /></td>' +
+        '<td><input type="text" id="calle" name="calle" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="numero-actualiza">N&uacute;mero:</label></td>' +
+        '<td><label for="numero">N&uacute;mero:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="numero-actualiza" name="numero-actualiza" /></td>' +
+        '<td><input type="text" id="numero" name="numero" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="colonia-actualiza">Colonia:</label></td>' +
+        '<td><label for="colonia">Colonia:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="text" id="colonia-actualiza" name="colonia-actualiza" /></td>' +
+        '<td><input type="text" id="colonia" name="colonia" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="codigo-actualiza">C&oacute;digo Postal:</label></td>' +
+        '<td><label for="codigo">C&oacute;digo Postal:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="number" id="codigo-actualiza" name="codigo-actualiza" /></td>' +
+        '<td><input type="number" id="codigo" name="codigo" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="tel-actualiza">T&eacute;lefono o celular:</label></td>' +
+        '<td><label for="tel">T&eacute;lefono o celular:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="tel-actualiza" id="tel-actualiza" name="tel-actualiza" /></td>' +
+        '<td><input type="tel" id="tel" name="tel" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="correo-actualiza">Correo Electr&oacute;nico:</label></td>' +
+        '<td><label for="correo">Correo Electr&oacute;nico:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="email" id="correo-actualiza" name="correo-actualiza" /></td>' +
+        '<td><input type="email" id="correo" name="correo" /></td>' +
         '</tr>' +
         '</table>' +
         '' +
@@ -105,17 +106,18 @@ function setformulario() {
         '' +
         '' +
         '<table>' +
-        '<caption>Procedencia:</caption>' +
+        '<caption>Procedencia</caption>' +
         '<tr>' +
-        '<td><label for="Escuela-actualiza">Escuela de procedencia:</label></td>' +
+        '<td><label for="EscuelaProcedencia">Escuela de procedencia:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><select name="Escuela-actualiza" id="Escuela-actualiza" onChange="mostrar(this.value);">' +
+        '<td><select name="EscuelaProcedencia" id="Escuela" onChange="mostrar(this.value);">' +
         '<option value="default">--Escoge una opci&oacute;n--</option>' +
         '<option value="CECyT1">CECyT #1: "Gonzalo V&aacute;zquez Vela"</option>' +
         '<option value="CECyT2">CECyT #2: “Miguel Bernard Perales"</option>' +
         '<option value="CECyT3">CECyT #3: “Estanislao Ram&iacute;rez Ruiz"</option>' +
-        '<option value="CECyT4">CECyT #4: “L&aacute;zaro C&aacute;rdenas del r&iacute;o"</option>' +
+        '<option value="CECyT4">CECyT #4: “L&aacute;zaro C&aacute;rdenas del r&iacute;o"' +
+        '</option>' +
         '<option value="CECyT5">CECyT #5: “Benito Ju&aacute;rez"</option>' +
         '<option value="CECyT6">CECyT #6: “Miguel Oth&oacute;n de Mendizabal"</option>' +
         '<option value="CECyT7">CECyT #7: “Cuauht&eacute;moc"</option>' +
@@ -131,17 +133,17 @@ function setformulario() {
         '<option value="otra">Otra</option>' +
         '</select></td>' +
         '</tr>' +
-        '<tr id="Lesc-actualiza">' +
-        '<td><label id="lotra" for="NombreEscuela-actualiza">Nombre de la escuela: </label></td>' +
+        '<tr id="lesc">' +
+        '<td><label id="lotra" for="NombreEscuela">Nombre de la escuela: </label></td>' +
         '</tr>' +
-        '<tr id="iesc-actualiza">' +
-        '<td><input type="text" id="NombreEscuela-actualiza" name="NombreEscuela-actualiza" /></td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td><label for="Estado-actualiza">Estado de la Rep&uacute;blica</label></td>' +
+        '<tr id="iesc">' +
+        '<td><input type="text" id="NombreEscuela" name="NombreEscuela" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><select name="Estado-actualiza" id="Estado-actualiza">' +
+        '<td><label for="Estado">Estado de la Rep&uacute;blica</label></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><select name="estado" id="Estado">' +
         '<option value="default">--Escoge una opci&oacute;n--</option>' +
         '<option value="Aguascalientes">Aguascalientes</option>' +
         '<option value="BC">Baja California</option>' +
@@ -179,16 +181,16 @@ function setformulario() {
         '</tr>' +
         '' +
         '<tr>' +
-        '<td><label for="Promedio-actualiza">Promedio: </label></td>' +
+        '<td><label for="Promedio">Promedio:</label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><input type="number" step="any" id="Promedio-actualiza" name="Promedio-actualiza" /></td>' +
+        '<td><input type="number" step="any" id="Promedio" name="Promedio" /></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><label for="Opcion-actualiza">ESCOM fue tu: </label></td>' +
+        '<td><label for="Opcion">ESCOM fue tu: </label></td>' +
         '</tr>' +
         '<tr>' +
-        '<td><select name="Opcion-actualiza" id="Opcion-actualiza">' +
+        '<td><select name="Opcion" id="Opcion">' +
         '<option value="default">--Escoge una opci&oacute;n--</option>' +
         '<option value="Primera_opcion">Primera opci&oacute;n</option>' +
         '<option value="Segunda_opcion">Segunda opci&oacute;n</option>' +
@@ -200,12 +202,10 @@ function setformulario() {
         '' +
         '<br>' +
         '<!-- Envio y reseto de informacion -->' +
+        '<input type="text" value="administrador" id="origen" name="origen" style="display: none;">' +
+        '<div id="menRev" class="error"></div>' +
         '<input class="boton" type="reset" />' +
-        '<input class="boton" type="submit" value="Enviar" />' +
-        '<!--<input type="submit" onclick="confirmar_envio()" name="Envio" value="Enviar"/><br>-->' +
+        '<input class="boton" type="submit" value="Enviar" id="boton-registrar" onclick="return insertarAlumno()" />';
         '</form>';
-
-    document.write(form);
-    
+        return form;
 }
-setformulario();

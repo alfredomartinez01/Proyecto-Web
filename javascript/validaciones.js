@@ -1,4 +1,4 @@
-function insertarAlumno(opcion) {
+function insertarAlumno(operacion) {
     /*Obtención de los elementos */
     var error = false; // Si encuentra algún error se vuelve verdadera
     //ocultarDiv();
@@ -181,27 +181,44 @@ function insertarAlumno(opcion) {
         error = true;
     }
 
-    
+
     if (!error) { // No encontró ningún error
         //Mostramos la información
-        if (confirmar_envio()) { 
-            // Envíamos la información a la base de datos por ajax
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../php/datos.php", false); //direccion de a donde se va a enviar
-            ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            ajax.onload = function () {
-               var response = this.responseText;   
-               console.log(response);           
-            }
-            var data = document.getElementById("form_data"); //id de formulario
-            var formdata = new FormData(data); 
+        if (confirmar_envio()) {
+            if (operacion == 1) { // Se trata de una actualización
+                // Envíamos la información a la base de datos por ajax
+                var ajax = new XMLHttpRequest();
+                ajax.open("POST", "../php/actualizarAlumno.php", false); //direccion de a donde se va a enviar
+                ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                ajax.onload = function () {
+                    var response = this.responseText;
+                    console.log(response);
+                }
+                var data = document.getElementById("form_data"); //id de formulario
+                var formdata = new FormData(data);
 
-            ajax.send(formdata);
-            return true;
-        } else{
+                ajax.send(formdata);
+                return true;
+            } else { // Se trata de una inserción
+                // Envíamos la información a la base de datos por ajax
+                var ajax = new XMLHttpRequest();
+                ajax.open("POST", "../php/datos.php", false); //direccion de a donde se va a enviar
+                ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                ajax.onload = function () {
+                    var response = this.responseText;
+                    console.log(response);
+                }
+                var data = document.getElementById("form_data"); //id de formulario
+                var formdata = new FormData(data);
+
+                ajax.send(formdata);
+                return true;
+            }
+
+        } else {
             return false;
         }
-    } else{
+    } else {
         return false;
     }
 }
@@ -212,7 +229,7 @@ function setMessage(mensaje) {
     cajita.textContent = mensaje;
 }
 function ocultarDiv(opcion) {
-    if(opcion == 0){
+    if (opcion == 0) {
         cajita = document.getElementById("menRev");
         cajita.textContent = "";
         cajita.style.display = 'none';

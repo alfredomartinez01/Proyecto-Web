@@ -14,6 +14,8 @@ switch ($tipo) {
             getAlumnosData();
         } else if($operacion == 'actualizar'){
             actualizaDatos($_POST['boleta'], $_POST['correo'], $_POST['telefono']);
+        } else if ($operacion == 'select'){
+            seleccionarAlumno($_POST['boleta']);
         } else{
             eliminaPorBoleta($_POST['boleta']);
         }
@@ -62,6 +64,43 @@ function buscarBoleta($boleta)
 
     $sqlSelect = "SELECT * FROM alumno where noBoleta='$boleta'";
     $resSelect = mysqli_query($conexion, $sqlSelect);
+}
+
+function seleccionarAlumno($boleta){
+    global $resSelect;
+    global $conexion;
+    global $alumnos;
+
+    $sqlSelect = "SELECT * FROM alumno where noBoleta=$boleta";
+    $resSelect = mysqli_query($conexion, $sqlSelect);
+
+    $alumno = array();
+    $indice = 0;
+
+    while ($row = $resSelect->fetch_assoc()) {        
+        $alumno['boleta'] = $row['noBoleta'];
+        $alumno['curp'] = $row['curp'];
+        $alumno['nombre']= $row['nombre'];
+        $alumno['apPaterno']= $row['apPaterno'];
+        $alumno['apMaterno'] = $row['apMaterno'];
+        $alumno['fechaNac'] = $row['fechaNacimiento'];
+        $alumno['genero'] = $row['genero'];
+        $alumno['escProcedencia'] = $row['escProcedencia'];
+        $alumno['entFedProcedencia'] = $row['entFedProced'];
+        $alumno['nomEsc'] = $row['nomEsc'];
+        $alumno['promedio'] = $row['promedio'];
+        $alumno['escom'] = $row['escom'];
+        $alumno['calleYNum'] = $row['calleYNum'];
+        $alumno['colonia'] = $row['Colonia'];
+        $alumno['codigoPostal'] = $row['codigoPostal'];
+        $alumno['telefono'] = $row['telefono'];
+        $alumno['correoElect'] = $row['correoElect'];
+        array_push($alumnos, $alumno);
+        
+        $indice++;
+    }
+    $json = json_encode($alumnos, JSON_UNESCAPED_UNICODE);
+    print_r($json);
 }
 
 function actualizaDatos($boleta, $correo, $telefono){
