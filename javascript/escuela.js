@@ -31,7 +31,7 @@ function confirmar_envio() {
     var promedio = document.confirmar.Promedio.value;
     var opcion = document.confirmar.Opcion.value;
 
-    res_confirm = confirm("Holaaaaa" + " " + nombre + " " + apaterno + " " + amaterno + " " +
+    res_confirm = confirm("Hola" + " " + nombre + " " + apaterno + " " + amaterno + " " +
     "verifica que los datos que ingresaste sean correctos:" + "\n" +
     "Nombre: " + nombre + "\n" +
     "Apellido paterno: " + apaterno + "\n" +
@@ -40,13 +40,16 @@ function confirmar_envio() {
     "Fecha de nacimiento:" + Fnac + "\n" +
     "Género: " + genero + "\n" +
     "CURP: " + curp + "\n" +
-    "contacto:\n " +
+    "\n"+
+    "contacto\n " +
     "Calle: " + calle + "\n" +
     "Número: " + num + "\n" +
     "Colonia: " + colonia + "\n" +
     "Código postal: " + cp + "\n" +
-    "Télefono/celular: " + tel + "\n" +
+    "Teléfono/celular: " + tel + "\n" +
     "E-mail: " + email + "\n" +
+    "\n"+
+    "Prodecencia \n"+
     "Prodecencia: " + Escuela + "\n" +
     "Procedencia: " + otra + "\n" +
     "Estado de la República: " + estado + "\n" +
