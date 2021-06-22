@@ -140,13 +140,14 @@ function buscarGrupo($grupo){
     global $resSelect;
     global $conexion;
    
-    $sqlSelect =  "SELECT * FROM alumno WHERE curp = (select curp from examen where grupo = '$grupo')";
+    $sqlSelect =  "SELECT * FROM alumno WHERE curp in (select curp from examen where grupo = '$grupo')";
+    //echo $sqlSelect;
     $resSelect = mysqli_query($conexion, $sqlSelect);
 }
 function eliminaPorGrupo($grupo){
     // Hacemos el query y comprobamos
     global $conexion;
-    $sqlDetele =  "DELETE FROM alumno WHERE curp = (select curp from examen where grupo = '$grupo')";
+    $sqlDetele =  "DELETE FROM alumno WHERE curp in (select curp from examen where grupo = '$grupo')";
     $resDelete = mysqli_query($conexion, $sqlDetele);
     echo $resDelete;  
 }
@@ -155,13 +156,14 @@ function buscarHora($hora){
     global $resSelect;
     global $conexion;
 
-    $sqlSelect =  "SELECT * FROM alumno WHERE curp = (select curp from examen where hora = '$hora')";
+    $sqlSelect =  "SELECT * FROM alumno WHERE curp in (select curp from examen where hora = '$hora:00')";
+    //echo $sqlSelect;
     $resSelect = mysqli_query($conexion, $sqlSelect);
 }
 function eliminaPorhora($hora){
     // Hacemos el query y comprobamos
     global $conexion;
-    $sqlDetele =  "DELETE FROM alumno WHERE curp = (select curp from examen where hora = '$hora')";
+    $sqlDetele =  "DELETE FROM alumno WHERE curp in (select curp from examen where hora = '$hora')";
     $resDelete = mysqli_query($conexion, $sqlDetele);
     echo $resDelete;    
 }

@@ -203,6 +203,7 @@ function fillTable(tipo) {
             var grupo = document.getElementById("grupo").value;
             xhr.onload = function () {
                 var response = this.responseText;
+                //console.log(response);                
                 alumnos = JSON.parse(response);
             }
             var informacion = "tipo=" + tipo + "&operacion=buscar" + "&grupo=" + grupo;
@@ -215,6 +216,7 @@ function fillTable(tipo) {
                 alumnos = JSON.parse(response);
             }
             var informacion = "tipo=" + tipo + "&operacion=buscar" + "&hora=" + hora;
+            //console.log(hora);
             xhr.send(informacion);
             break;
         case "todo":

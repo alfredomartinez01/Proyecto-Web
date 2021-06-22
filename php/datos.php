@@ -34,7 +34,7 @@ $password = '';
 $db = 'examen';
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $db);
+$conn = mysqli_connect('localhost', 'root', '', 'examen');
 mysqli_set_charset($conn, "utf8"); // AQUI AGREGUE UTF-8
 
 // Check connection
@@ -43,7 +43,7 @@ if (!$conn) {
 } else { // Si la conexión es correcta 
 
     //(curp, noBoleta, nombre, apPaterno, apMaterno, fechaNacimiento, genero, escProcedencia, entFedProced, nomEsc, promedio, escom, calleYNum, Colonia, codigoPostal, telefono, correoElect)    
-    $sql = "INSERT INTO alumno VALUES('$CURP', $nDeboleta, '$nombre', '$aPaterno', '$aMaterno', '$fNacimiento', '$genero', '$escuelaP', '$estado', '$otra', $promedio, '$opcion', '$callenum', '$colonia', $codigo, $telefono,'$email')";
+    $sql = "INSERT INTO alumno VALUES('$CURP', '$nDeboleta', '$nombre', '$aPaterno', '$aMaterno', '$fNacimiento', '$genero', '$escuelaP', '$estado', '$otra', $promedio, '$opcion', '$callenum', '$colonia', $codigo, $telefono,'$email')";
 
     if (mysqli_query($conn, $sql)) { // Si se guarda correctamente
         //insertar Alumno en grupo 
