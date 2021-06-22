@@ -23,6 +23,7 @@ $grupo=$_SESSION["grupo"];
 $hora=$_SESSION["hora"]; 
 $salon=$_SESSION["salon"];
 
+
 class PDF extends tFPDF
 {
       // Cabecera de página
